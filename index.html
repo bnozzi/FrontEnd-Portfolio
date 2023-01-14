@@ -1,97 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hola capo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Ctr+Shift+I to format document -->
-    <header >
-      <nav class="navbar  d-flex" style="background: #010112">
-        <div class="nav">
-          <h3 class="navbar-brand text-light">BP</h3>
-        </div>
-        
-        <ul id="nav-links" class="nav">
-          <li class="nav-item">
-            <a href="#" class="nav-link link-light">Sobre mi</a>
-          </li>
-          <a href="#" class="nav-link link-light">Proyectos </a>
-          <li class="nav-item"></li>
-          <li class="nav-item">
-            <a href="#" class="nav-link link-light">Educacion</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link link-light">Contacto</a>
-          </li>
-        </ul>
 
-        <div id="login-section" class="nav d-flex align-items-center ">
-          <a href="https://github.com/bnozzi" target="_blank" rel="noopener noreferrer">
-          <svg
-            class="me-2 mb-1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="white"
-            class="bi bi-github"
-            viewBox="0 0 16 16"
-          >
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hola capo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body onload="hideSvg(); modifyNavItems();">
+  <!-- Ctr+Shift+I to format document -->
+  <header class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background: #010112">
+      <div id="navContent" class="container-fluid ">
+        <div style="width: 33%;">
+          <a id="logo" class="navbar-brand ms-2" href="#">
+            <img src="/images/Logo.png" alt="logo" style="max-width: 36px">
+          </a>
+        </div>
+        <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" id="togle">
+          <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarTogglerDemo02">
+
+          <ul id="nav-links" class="navbar-nav ">
+
+
+            <li class="nav-item " data-mdb-toggle="animation" data-mdb-animation-reset="true">
+              <a href="#aboutMe" class="nav-link link-light">Sobre mi</a>
+            </li>
+            <li class="nav-item">
+              <a href="#proyectos" class="nav-link link-light">Proyectos </a>
+            </li>
+            <li class="nav-item">
+              <a href="#educacion" class="nav-link link-light">Educacion</a>
+            </li>
+            <li class="nav-item">
+              <a href="#skills" class="nav-link link-light">Habilidades </a>
+            </li>
+            <li class="nav-item">
+              <a href="#footer" class="nav-link link-light">Contacto</a>
+            </li>
+          </ul>
+
+          <div id="login-section" class="navbar-nav  ">
+            <!-- <a href="https://github.com/bnozzi" target="_blank" rel="noopener noreferrer">
+          <svg class="me-2 mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
+            class="bi bi-github" viewBox="0 0 16 16">
             <path
-              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-            />
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
           </svg>
         </a>
         <a href="https://www.linkedin.com/in/bruno-pizzi-07a57a222/" target="_blank" rel="noopener noreferrer">
-          <svg
-          class="me-2 mb-1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="white"
-            class="bi bi-linkedin"
-            viewBox="0 0 16 16"
-          >
+          <svg class="me-2 mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
+            class="bi bi-linkedin" viewBox="0 0 16 16">
             <path
-              d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
-            />
+              d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
           </svg>
-        </a>
-        <a href="#" onclick="alert('haha')">
-          <svg
-            class="me-2 mb-1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="white"
-            class="bi bi-brightness-high-fill"
-            viewBox="0 0 16 16"
-          >
-          <path
-          d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
-          />
-        </svg>
-      </a>
-      <h3 class="navbar-brand text-light">Login</h3>
+        </a> -->
+            <a href="#" onclick="alert('haha')" id="SunMoon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                <path
+                  d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+              </svg>
+            </a>
+
+
+            <a id="LoginInput" class="btn text-light mb-1 d-flex" style="background-color: #010112;"
+              data-bs-toggle="modal" data-bs-target="#LoginModal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+              </svg>
+            </a>
+          </div>
         </div>
-      </nav>
-    </header> 
-   
+    </nav>
+  </header>
+
+  <div id="LoginModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content text-light border border-white" style="background-color: #010112" ;>
+        <div class="modal-header">
+          <h5 class="modal-title ">Iniciar Sesion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="login-form" class="form needs-validation" novalidate>
+
+            <!-- Email -->
+            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" required>
+            <div class="invalid-feedback text-danger">
+              ingrese una cuenta valida
+            </div>
+
+            <!-- Password -->
+            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"
+              required>
+            <div class="invalid-feedback text-danger mb-1">
+              Proporciona una contraseña válida.
+            </div>
+
+            <button type="submit" form="login-form" class="btn btn-primary"> Ingresar</button>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="aboutMe" class="">
+
+    <div class="card bg-dark text-white ">
+      <div id="bannerImgCont ">
+
+        <img id="bannerImg" src="images/banner.jpg" class="card-img" alt="banner" height="400" />
+      </div>
+      <div class="card-img-overlay ">
+
+        <div id="bannerContent" class="d-flex justify-content-between align-items-center " data-aos="fade-left" data-aos-delay="500">
+
+          <img id="bannerImgProfile" src="/images/profile.jpg" alt="" class="ms-5">
+
+          <div id="bannerText" class=" text-center ">
+            <h5 class="card-title "> ¡Bienvenido/a a mi portfolio! </h5>
+            <p class="card-text" id="AboutMe-card-text">
+              Me llamo Bruno Pizzi, soy estudiante de Ingeniería en Sistemas de Información y Desarrollador Web. <br>
+              Mi enfoque principal es la creación de soluciones innovadoras y experiencias de
+              usuario excepcionales. A través de mis estudios, he adquirido una sólida
+              comprensión de las metodologías de desarrollo de software, así como también las habilidades necesarias
+              para diseñar y desarrollar aplicaciones web y móviles.
+              <!-- Con mi conocimiento técnico, mi habilidad para resolver problemas y mi enfoque en el usuario, estoy seguro
+              de poder contribuir con soluciones innovadoras e impactar positivamente en cualquier empresa o proyecto en
+              el que me involucre. -->
+
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="ContainerSections" class=" mt-5 grid  ">
+
+    <div id="proyectos" class=" mt-5  g-col-8   text-center" data-aos="fade" data-aos-delay="1000">
+      <h4 class="h4 text-light"> Proyectos</h4>
+      <div id=carouselComponent class="">
+
+        <!-- para  cancelar el autoslide  Agregando data-interval="false"y eliminando data-bs-ride="carousel" -->
+        <div id="carouselExampleControls" class="carousel slide pause" data-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <!-- card -->
+              <div class="card mb-3 text-light" style="max-width: 750px; ">
+                <div class="row g-0" style="width: 100%;">
+                  <div class="col-md-4 d-flex flex-align-center mt-3" style="height: 100%;">
+                    <img src='/images/Numero 7.png' class="img-fluid rounded-start mt-4" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body mt-4" style="width: 100%;">
+                      <h5 class="card-title">Academia de calistenia</h5>
+
+                      <p class="card-text">Un prototipo web hecho en base al analsis del sistema propuesto en un
+                        proyecto
+                        academico usando el modelo de negocios, el de dominio, casos de uso,
+                        requerimientos funcionales y no funcionales en que tiene como fianalidad realizar
+                        tanto la inscripcion como el cobro a una academia de calistenia.</p>
+                      <p class="card-text"> <small class="text-muted">
+                          HTML CSS Javascript
+                        </small></p>
+                      <div class="cardLinks">
+                        <a href="https://bnozzi.github.io/TPI-ASI/prototipo/pagina2.html" class="me-2" target="_blank">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-link"
+                            viewBox="0 0 16 16">
+                            <path
+                              d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+                            <path
+                              d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
+                          </svg>
+                        </a>
+                        <a href="https://github.com/bnozzi/TPI-ASI" target="_blank"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-github"
+                            viewBox="0 0 16 16">
+                            <path
+                              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                          </svg></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- endcard -->
+            </div>
+            <div class="carousel-item">
+              <!-- card -->
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Título de la tarjeta 2</h5>
+                      <p class="card-text">Esta es una tarjeta más amplia con texto de apoyo a continuación como
+                        introducción natural a contenido adicional. Este contenido es un poco más largo.</p>
+                      <p class="card-text"><small class="text-muted">Última actualización hace 3 minutos</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- endcard -->
+            </div>
+            <div class="carousel-item">
+              <!-- card -->
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Título de la tarjeta 3</h5>
+                      <p class="card-text">Esta es una tarjeta más amplia con texto de apoyo a continuación como
+                        introducción natural a contenido adicional. Este contenido es un poco más largo.</p>
+                      <p class="card-text"><small class="text-muted">Última actualización hace 3 minutos</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- endcard -->
+
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon  " aria-hidden="true"> </span>
+            <!-- <span class="sr-only">Previous</span> -->
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true">
+            </span>
+            <!-- <span class="sr-only">Next</span> -->
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="educacion" class="  mt-5  g-col-8 " data-aos="fade-right" >
+      <h4 class="h4 text-light text-center mb-3 "> Educacion</h4>
+      <div class="row">
+        <div class="col-4">
+          <div class="list-group list-group-flush bg-dark" id="list-tab" role="tablist">
+
+
+            <button
+              class="list-group-item list-group-item-action active  d-flex justify-content-between list-group-item-dark align-items-center"
+              id="list-home-list" data-bs-toggle="list" href="#list-1" role="tab" aria-controls="list-1"
+              onclick="hideSvg()"> Ingenieria en sistemas
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16" style="display: none;">
+                <path
+                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+              </svg>
+            </button>
+
+            <button
+              class="list-group-item list-group-item-action  d-flex justify-content-between list-group-item-dark align-items-center"
+              id="list-profile-list" data-bs-toggle="list" href="#list-2" role="tab" aria-controls="list-2"
+              onclick="hideSvg()">Introduccion a la
+              programacion
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16 " style="display:none;">
+                <path
+                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+              </svg>
+            </button>
+
+            <!-- <button
+              class="list-group-item list-group-item-action d-flex justify-content-between list-group-item-dark align-items-center"
+              id="list-messages-list" data-bs-toggle="list" href="#list-3" role="tab" aria-controls="list-3"
+              onclick="hideSvg()">Title
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16" style="display: none;">
+                <path
+                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+              </svg>
+            </button> -->
+          </div>
+        </div>
+        <div class="col-8 text-light">
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-1" role="tabpanel" aria-labelledby="list-home-list">
+              <div class="card" style="width: 80%;">
+                <div class="card-img-top text-center">
+                  <img src="images/BulkResizePhotos.com/utn logo.png" class="" alt="...">
+
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-muted text-center">Actualmente</p>
+                  <p class="card-text">
+                    Donde estoy aprendiendo acerca del diseño (desarrollo creativo de una idea), implementación (idea
+                    que
+                    se materializa), organización y control de la información requerida por organismos públicos y
+                    privados.
+                    Adquiri habilidades en diversos campos tales como matemática, programación, gestión de datos,
+                    software, hardware y redes.
+                  </p>
+                  <!-- <p class="card-text text-muted text-center"> <small> click en imagen para ver certificacion </small></p> -->
+
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="list-2" role="tabpanel" aria-labelledby="list-profile-list">
+              <div class="card" style="width: 80%;">
+                <div class="card-img-top text-center">
+                  <a href="https://seprogramar.inti.gob.ar/inti/certificates/verify/t_wRRL4bsxVL1h8I" target="_blank">
+                    <img src="images/BulkResizePhotos.com/APLogo-20-20.png" class="" alt="...">
+                  </a>
+
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-muted text-center"> 06/22 - 08/22</p>
+                  <p class="card-text">
+                    En este curso aprendi sohre los fundamentos de la programacion usando un lenguaje grafico llamado <a
+                      class="link-light text-decoration-none" href="http://gobstones.org/">gobstones</a>
+                    , di mis primeros pasos en <strong> Javascript </strong>aplicando la programacion imperativa y
+                    estructura de datos finalizando con la programacion orientada a objetos
+                    con <a class="link-light text-decoration-none" href="https://www.ruby-lang.org/es/"> Ruby</a>
+                  </p>
+                  <p class="card-text text-muted text-center"> <small> click en imagen para ver certificacion </small>
+                  </p>
+
+                </div>
+              </div>
+
+
+
+            </div>
+            <!-- <div class="tab-pane fade" id="list-3" role="tabpanel" aria-labelledby="list-messages-list">3</div> -->
+          </div>
+        </div>
+      </div>
 
     </div>
 
-    <div id="content">
+
+    <div id="skills" class="  mt-5  g-col-8 text-center  mb-5" data-aos="fade-top" >
+      <h4 class="h4 text-light mb-5"> Habilidades</h4>
+
+      <div id="skill-content" class="row gx-1 text-center text-light  ">
+        <div id="len" class="col-lg-3 col-sm-6    ">
+          <label for="" class="mb-2 skill-titles">Lenguajes</label>
+          <ul class="list-unstyled ">
+            <li class=""><small class="text-muted"> HTML </small></li>
+            <li class=""><small class="text-muted"> CSS/Bootstrap</small> </li>
+            <li class=""><small class="text-muted"> Javascript </small> </li>
+            <li class=""><small class="text-muted"> Java </small></li>
+            <li class=""><small class="text-muted"> Typescript </small></li>
+            <li class=""><small class="text-muted"> Python </small></li>
+            <li class=""><small class="text-muted"> SQL </small></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <label for="" class="mb-2 skill-titles">Frameworks</label>
+          <ul class="list-unstyled ">
+            <li class=""><small class="text-muted">Angular </small></li>
+            <li class=""><small class="text-muted"> Spring boot</small> </li>
+            <li class=""><small class="text-muted"> Flask </small> </li>
+          </ul>
+        </div>
+        <div class="col-lg-3  col-sm-6">
+          <label for="" class="mb-2 skill-titles">Modelado de Sistemas</label>
+          <ul class="list-unstyled ">
+
+            <li class=""><small class="text-muted"> Modelo de negocio </small></li>
+            <li class=""><small class="text-muted"> Modelo de dominio</small></li>
+            <li class=""><small class="text-muted"> Casos de uso </small></li>
+
+          </ul>
+        </div>
+        <div class="col-lg-3  col-sm-6">
+          <label for="" class="mb-2 skill-titles">Herramientas</label>
+          <ul class="list-unstyled ">
+
+            <li class=""><small class="text-muted"> Bash </small></li>
+            <li class=""><small class="text-muted"> Git & Github </small></li>
+            <li class=""><small class="text-muted"> Postman </small></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div id="footer" class="bg-dark ">
+
+      <footer class="d-flex justify-content-center align-items-center">
+        <label for="" class=" text-light me-3"> Contactame! </label>
+        <div id="footerLinks" class="ms-3" data-aos="">
+          <a href="https://github.com/bnozzi" target="_blank" rel="noopener noreferrer">
+            <svg class="me-2 mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
+              class="bi bi-github" viewBox="0 0 16 16">
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/bruno-pizzi-07a57a222/" target="_blank" rel="noopener noreferrer">
+            <svg class="me-2 mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
+              class="bi bi-linkedin" viewBox="0 0 16 16">
+              <path
+                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+            </svg>
+          </a>
+          <a role="button" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-envelope"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+            </svg>
+          </a>
+
+
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Enviame un correo</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <!-- Default form contact -->
+                  <form id="formContact" class="text-center border border-light p-5" action="#!">
+
+                    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nombre">
+
+                    <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+                    <!-- Message -->
+                    <div class="form-group">
+                      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"
+                        placeholder="Mensaje"></textarea>
+                    </div>
+
+
+                    <!-- Send button -->
+
+                  </form>
+                  <!-- Default form contact -->
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" form="formContact" class="btn btn-success" type="submit">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+      </footer>
 
     </div>
-  </body>
-  <script src="script.js"></script>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  
+  
+    
+    <script src="/script.js"></script>
+</body>
+
 </html>
