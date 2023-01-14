@@ -12,10 +12,7 @@ function stickyNavbar() {
       nav.classList.remove("scrolled-up");
       nav.classList.add("scrolled-down");
     }
-
-  } 
-  
-  else {
+  } else {
     //up scroll
     nav.classList.add("fixed-top");
     nav.classList.remove("scrolled-down");
@@ -23,6 +20,8 @@ function stickyNavbar() {
     beforeScrollY = actualSrollY;
   }
 }
+
+
 
 //fix nav bar items when window.innerWidth<992
 window.onresize = modifyNavItems;
@@ -51,20 +50,16 @@ function modifyNavItems() {
 }
 
 window.addEventListener("scroll", function (event) {
-  let nav=document.getElementsByTagName("nav")[0];
+  let nav = document.getElementsByTagName("nav")[0];
   if (window.innerWidth > 992) {
     //d-flex align-items-center
     stickyNavbar();
-  }
-  else{
+  } else {
     nav.classList.add("fixed-top");
     nav.classList.remove("scrolled-down");
     nav.classList.remove("scrolled-up");
-
   }
 });
-
-
 
 // function to hide svg in listgroup when user clicks a button of the listgroup and set active the button
 
@@ -82,21 +77,3 @@ function hideSvg() {
     }
   });
 }
-
-function animateNavBarElements(){
-  let navLinks=document.getElementById("nav-links");
-  let liCollection = Array.prototype.slice.call(navLinks);
-  
-  const element = document.getElementById("nav-links");
-  const animate = new mdb.Animate(element, {
-    animation: "fade-in-left",
-    animationStart: "onLoad",
-    animationDelay: "0",
-    animationDuration: "500",
-    animationReverse: "false",
-    animationRepeat: "false",
-    animationInterval: "0",
-  });
-  animate.init();
-
-} 
