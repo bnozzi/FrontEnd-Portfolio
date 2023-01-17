@@ -1,0 +1,40 @@
+<div id="skills" class="  mt-5  g-col-8 text-center  mb-5"  >
+    <h4 class="h4 text-light mb-5"> Habilidades</h4>
+
+    <div id="skill-content" class="row gx-1 text-center text-light  ">
+      <div id="len" class="col-lg-3 col-sm-6    " *ngFor="let skill of skills">
+        <label for="" class="mb-2 skill-titles">{{skill.name}}</label>
+        <ul class="list-unstyled " *ngFor="let item of skill.items">
+          <li class=""><small class="text-muted"> {{item}} </small></li>
+        </ul>
+      </div>
+      <!-- <div class="col-lg-3 col-sm-6">
+        <label for="" class="mb-2 skill-titles">Frameworks</label>
+        <ul class="list-unstyled ">
+          <li class=""><small class="text-muted">Angular </small></li>
+          <li class=""><small class="text-muted"> Spring boot</small> </li>
+          <li class=""><small class="text-muted"> Flask </small> </li>
+        </ul>
+      </div>
+      <div class="col-lg-3  col-sm-6">
+        <label for="" class="mb-2 skill-titles">Modelado de Sistemas</label>
+        <ul class="list-unstyled ">
+
+          <li class=""><small class="text-muted"> Modelo de negocio </small></li>
+          <li class=""><small class="text-muted"> Modelo de dominio</small></li>
+          <li class=""><small class="text-muted"> Casos de uso </small></li>
+
+        </ul>
+      </div>
+      <div class="col-lg-3  col-sm-6">
+        <label for="" class="mb-2 skill-titles">Herramientas</label>
+        <ul class="list-unstyled ">
+
+          <li class=""><small class="text-muted"> Bash </small></li>
+          <li class=""><small class="text-muted"> Git & Github </small></li>
+          <li class=""><small class="text-muted"> Postman </small></li>
+        </ul>
+
+      </div> -->
+    </div>
+</div>

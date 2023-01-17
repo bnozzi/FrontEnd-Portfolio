@@ -1,0 +1,86 @@
+<div id="educacion" class="  mt-5  g-col-8 " >
+  <h4 class="h4 text-light text-center mb-3 "> Educacion</h4>
+  <div class="row">
+    <div class="col-4">
+      <div class="list-group list-group-flush bg-dark" id="list-tab" role="tablist">
+
+
+        <button *ngFor="let title of educacion;first as IF"
+          class="list-group-item list-group-item-action active  d-flex justify-content-between list-group-item-dark align-items-center"
+          id="list-home-list" data-bs-toggle="list" [attr.href]="title.cardReference" role="tab" [attr.aria-controls]="title.cardReference.replace('#','')"
+          onclick="hideSvg()" [ngClass]="{'active': IF}"> {{title.nameItem}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16" style="display: none;">
+            <path
+              d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+          </svg>
+        </button>
+
+
+
+        <!-- <button
+          class="list-group-item list-group-item-action d-flex justify-content-between list-group-item-dark align-items-center"
+          id="list-messages-list" data-bs-toggle="list" href="#list-3" role="tab" aria-controls="list-3"
+          onclick="hideSvg()">Title
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16" style="display: none;">
+            <path
+              d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+          </svg>
+        </button> -->
+      </div>
+    </div>
+    <div class="col-8 text-light">
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show" [id]="educacionItem.cardReference.replace('#','')" role="tabpanel" aria-labelledby="list-home-list"
+          *ngFor="let educacionItem of educacion; first as IF"  [ngClass]="{'active show' : IF}">
+          <div class="card" style="width: 80%;">
+            <div class="card-img-top text-center">
+              <a href="">
+                <img [src]="educacionItem.image" class="" alt="...">
+              </a>
+
+            </div>
+            <div class="card-body">
+              <p class="card-text text-muted text-center">{{educacionItem.time}}</p>
+              <p class="card-text">
+                {{educacionItem.detalle}}  
+              </p>
+              <p class="card-text text-muted text-center"> <small>{{educacionItem.aclaracion}} </small></p>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="tab-pane fade" id="list-2" role="tabpanel" aria-labelledby="list-profile-list">
+          <div class="card" style="width: 80%;">
+            <div class="card-img-top text-center">
+              <a href="https://seprogramar.inti.gob.ar/inti/certificates/verify/t_wRRL4bsxVL1h8I" target="_blank">
+                <img src="images/BulkResizePhotos.com/APLogo-20-20.png" class="" alt="...">
+              </a>
+
+            </div>
+            <div class="card-body">
+              <p class="card-text text-muted text-center"> 06/22 - 08/22</p>
+              <p class="card-text">
+                En este curso aprendi sohre los fundamentos de la programacion usando un lenguaje grafico llamado <a
+                  class="link-light text-decoration-none" href="http://gobstones.org/">gobstones</a>
+                , di mis primeros pasos en <strong> Javascript </strong>aplicando la programacion imperativa y
+                estructura de datos finalizando con la programacion orientada a objetos
+                con <a class="link-light text-decoration-none" href="https://www.ruby-lang.org/es/"> Ruby</a>
+              </p>
+              <p class="card-text text-muted text-center"> <small> click en imagen para ver certificacion </small>
+              </p>
+
+            </div>
+          </div>
+
+
+
+        </div> -->
+        <!-- <div class="tab-pane fade" id="list-3" role="tabpanel" aria-labelledby="list-messages-list">3</div> -->
+      </div>
+    </div>
+  </div>
+
+</div>

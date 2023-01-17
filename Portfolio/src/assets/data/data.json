@@ -1,0 +1,77 @@
+{
+  "PersonalData": {
+    "name": "Bruno Pizzi",
+    "profileImg": "../../assets/images/profile.jpg",
+    "bannerImg": "../../assets/images/banner.jpg",
+    "aboutMe": "Me llamo Bruno Pizzi, soy estudiante de Ingeniería en Sistemas de Información y Desarrollador Web.Mi enfoque principal es la creación de soluciones innovadoras y experiencias de usuario excepcionales. A través de mis estudios, he adquirido una sólida comprensión de las metodologías de desarrollo de software, así como también las habilidades necesarias para diseñar y desarrollar aplicaciones web y móviles."
+  },
+  "proyects": [
+    { "name": "calistania", "image": "" },
+    { "name": "Proyecto2", "image": "" }
+  ],
+
+  "educacion": [
+    {
+      "nameItem": "Ingenieria en Sistemas",
+      "cardReference": "#list-1",
+      "btnReference": "list-1-list",
+      "image": "../../assets/images/BulkResizePhotos.com/utn logo.png",
+      "time": "Actualmente",
+      "aclaracion": "",
+      "detalle": "Donde estoy aprendiendo acerca del diseño (desarrollo creativo de una idea), implementación (idea que se materializa), organización y control de la información requerida por organismos públicos y privados. Adquiri habilidades en diversos campos tales como matemática, programación, gestión de datos, software, hardware y redes.",
+      "strong": [],
+      "link": []
+    },
+    {
+      "nameItem": "Introduccion a la programacion",
+      "cardReference": "#list-2",
+      "btnReference": "list-2-list",
+      "image": "../../assets/images/BulkResizePhotos.com/APLogo-20-20.png",
+      "time": "06/22 - 08/22",
+      "detalle": "En este curso aprendi sohre los fundamentos de la programacion usando un lenguaje grafico llamado gobstones , di mis primeros pasos en Javascript aplicando la programacion imperativa y estructura de datos finalizando con la programacion orientada a objetos con Ruby",
+      "aclaracion": "click en imagen para ver mas informacion",
+      "strong": ["Javascript"],
+      "link": ["gobstones", "Ruby"]
+    }
+  ],
+
+  "proyectos": [
+    {
+      "image": "../../assets/images/Numero 7.png",
+      "title": "Academia de calistenia",
+      "detalle": "Un prototipo web hecho en base al analsis del sistema propuesto en un proyecto academico usando el modelo de negocios, el de dominio, casos de uso, requerimientos funcionales y no funcionales en que tiene como fianalidad realizar tanto la inscripcion como el cobro a una academia de calistenia.",
+      "tecnologias": "HTML CSS Javascript",
+      "live_link": "https://bnozzi.github.io/TPI-ASI/prototipo/pagina2.html",
+      "git_link": "https://github.com/bnozzi/TPI-ASI"
+    }
+  ],
+
+  "skills":[
+
+    {
+    "name":"Lenguajes",
+    "items": [
+      "HTML",
+      "CSS/Bootstrap",
+      "Javascript",
+      "Java",
+      "Typescript",
+      "Python",
+      "SQL"
+    ]
+  },
+  {"name":"Frameworks",
+  "items":["Angular", "Spring boot", "Flask"]
+  },
+  {
+    "name":"Modelado de Sistemas",
+    "items": ["Modelo de negocio", "Modelo de dominio", "Casos de uso"]
+
+  },
+  {
+    "name":"herramientas",
+    "items":["Bash", "Git y Github", "Postman "]
+  }
+  ]
+
+}
