@@ -262,3 +262,25 @@ footer {
 @media (max-width: 320px) {
 }
 
+
+.buttonEdit{
+  color: whitesmoke;
+  background-color: #010112
+}
+
+
+
+.buttonEdit:focus{
+  cursor: pointer;
+}
+.buttonEdit:hover{
+  color: #64ffda;
+  
+}
+.editSectionSVG:hover {
+  cursor: pointer;
+  color: #64ffda;
+
+}
+
+

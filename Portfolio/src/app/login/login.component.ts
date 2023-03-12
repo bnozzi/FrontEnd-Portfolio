@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -7,17 +9,16 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user=""
-  password=""
+ 
 
+  constructor( public fb: FormBuilder,
+    public authService: AuthService,
+    public router: Router) { }
 
-  constructor(private authService:AuthService) { }
-
-  login(){
-    this.authService.login(this.user, this.password)
-  }
 
   ngOnInit(): void {
   }
+
+
 
 }

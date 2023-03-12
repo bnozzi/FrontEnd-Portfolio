@@ -92,7 +92,39 @@
     </nav>
   </header>
 
-  
+  <div id="LoginModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content text-light border border-white" style="background-color: #010112" ;>
+        <div class="modal-header">
+          <h5 class="modal-title ">Iniciar Sesion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="login-form" class="form needs-validation" novalidate>
+
+            <!-- Email -->
+            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" required>
+            <div class="invalid-feedback text-danger">
+              ingrese una cuenta valida
+            </div>
+
+            <!-- Password -->
+            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"
+              required>
+            <div class="invalid-feedback text-danger mb-1">
+              Proporciona una contraseña válida.
+            </div>
+
+            <button type="submit" form="login-form" class="btn btn-primary"> Ingresar</button>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="aboutMe" class="">
 
     <div class="card bg-dark text-white ">
@@ -418,8 +450,7 @@
                 </div>
                 <div class="modal-body">
                   <!-- Default form contact -->
-                  <form id="formContact" class="text-center border border-light p-5" action="#!">
-
+                  <form id="formContact" class="text-center border border-light p-5" action="mailto:b.pizzipe@gmail.com">
                     <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nombre">
 
                     <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">

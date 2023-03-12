@@ -8,12 +8,15 @@ import { ProyectosComponent } from './proyectos/proyectos.component';
 import { EducacionComponent } from './educacion/educacion.component';
 import { SkillsComponent } from './skills/skills.component';
 import { FooterComponent } from './footer/footer.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { EditComponent } from './edit/edit.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+
+import { NgModel, FormsModule } from '@angular/forms';
+import { AuthInterceptor } from './service/auth-interceptor.interceptor';
 
 
 @NgModule({
@@ -38,11 +41,17 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     HttpClientModule,
     CommonModule,
     AppRoutingModule,
-    
+    FormsModule,    
 
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
