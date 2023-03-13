@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Skill } from '../clases/edit/skill';
 import { Skills } from '../clases/edit/skills';
+import { AuthService } from '../service/auth.service';
 import { GetDataService } from '../service/get-data.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SkillsComponent implements OnInit {
   auxListSkills: Array<Skills> = [];
   editedSkill: any;
 
-  constructor(private skillsData: GetDataService) {}
+  constructor(private skillsData: GetDataService, private auth:AuthService) {}
 
   ngOnInit(): void {
     this.skillsData.obtenerDatos().subscribe((data) => {
@@ -98,5 +99,9 @@ export class SkillsComponent implements OnInit {
     //console.log(JSON.parse(JSON.stringify( this.listSkills)))
 
   }
+
+  isLogedin(){
+    return this.auth.isLoggedIn
+   }  
 
 }

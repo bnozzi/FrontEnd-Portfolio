@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Persona } from '../clases/edit/persona';
+import { AuthService } from '../service/auth.service';
 import { GetDataService } from '../service/get-data.service';
 
 @Component({
@@ -13,7 +14,7 @@ this.aboutMeObject.aboutMe=this.profileImg
 this.aboutMeObject.aboutMe=this.bannerImg
 this.aboutMeObject.aboutMe=this.descripcion
 
-this.cdRef.detectChanges();
+
 
 }
   
@@ -22,7 +23,7 @@ this.cdRef.detectChanges();
 profileImg: string=""
 bannerImg: string=""
 descripcion: string=""
-  constructor(private aboutmeData:GetDataService ,private cdRef: ChangeDetectorRef) {
+  constructor(private aboutmeData:GetDataService ,private auth:AuthService ) {
     // this.aboutMe
   }
 
@@ -39,11 +40,10 @@ descripcion: string=""
 
     });
 
-    
-    
-      
   }
-  
+ isLogedin(){
+  return this.auth.isLoggedIn
+ }  
 
 
 

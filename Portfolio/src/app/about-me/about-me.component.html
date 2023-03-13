@@ -20,7 +20,7 @@
               el que me involucre. -->
                 
             </p>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center" *ngIf="isLogedin()" >
               <button class="btn btn-sm d-flex  align-items-center buttonEdit" data-bs-toggle="modal" data-bs-target="#editAboutMe">
                  Editar 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-square ms-1" viewBox="0 0 16 16">

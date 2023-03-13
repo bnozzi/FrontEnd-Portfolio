@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyectos } from '../clases/edit/proyectos';
+import { AuthService } from '../service/auth.service';
 import { GetDataService } from '../service/get-data.service';
 
 @Component({
@@ -19,7 +20,7 @@ setDefaultAtt() {
 }
 proyectos:any
 listProyects:Proyectos[]=[]
-  constructor(private ProyectosData:GetDataService) { }
+  constructor(private ProyectosData:GetDataService , private auth:AuthService) { }
 
   ngOnInit(): void {
   this.ProyectosData.obtenerDatos().subscribe(data=> {
@@ -88,6 +89,12 @@ deleteProyecto(proyecto: Proyectos){
 //todo set active the first proyect of listProyect
 document.getElementsByClassName("carousel-item")[0].classList.add("active")
 
+}
+
+
+
+isLogedIn(){
+  return this.auth.isLoggedIn
 }
 
 

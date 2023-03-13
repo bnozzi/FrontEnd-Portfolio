@@ -6,9 +6,11 @@
         <div class="form-group w-50 px-5 mx-auto mt-5  pb-2  bg-light border border-dark border-1 ">
           <h5 class=" text-center">Login</h5>
   
-          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail"
+          name="email" [(ngModel)]="email" >
   
-          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"
+          name="pw" [(ngModel)]="password" >
   
           <div class="d-flex justify-content-around">
             <div>
@@ -22,7 +24,8 @@
             </div>
           </div>
   
-          <button type="submit" id="submitbtn" class="btn  d-block mx-auto mt-2 "> Login </button>
+          <button type="submit" id="submitbtn" class="btn  d-block mx-auto mt-2 "  (click)="login()"> Login </button>
+
           
         </div>
       </form>

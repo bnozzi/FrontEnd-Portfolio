@@ -1,0 +1,11 @@
+
+.loginbtn{
+    background: #010112;
+    color: white
+}
+
+.loginbtn:hover{
+    transition: color 1.5s ease-out;
+    color: #64ffda;
+}
+

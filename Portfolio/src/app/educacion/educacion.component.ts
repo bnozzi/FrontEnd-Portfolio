@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Educacion } from '../clases/edit/educacion';
+import { AuthService } from '../service/auth.service';
 //import { EditComponent } from '../edit/edit.component';
 import { GetDataService } from '../service/get-data.service';
 
@@ -13,7 +14,7 @@ export class EducacionComponent implements OnInit {
   listEducation: Educacion[] = [];
   dateFrom: string = '';
 
-  constructor(private educacionData: GetDataService) {
+  constructor(private educacionData: GetDataService, private auth: AuthService) {
     this.educacion;
   }
 
@@ -134,4 +135,10 @@ export class EducacionComponent implements OnInit {
       });
     }
   }
+
+
+
+  isLogedin(){
+    return this.auth.isLoggedIn
+   }  
 }
