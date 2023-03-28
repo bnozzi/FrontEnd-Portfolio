@@ -2,8 +2,8 @@
   "PersonalData": {
     "name": "Bruno Pizzi",
     "profileImg": "../../assets/images/profile.jpg",
-    "bannerImg": "../../assets/images/banner.jpg",
-    "aboutMe": "Me llamo Bruno Pizzi, soy estudiante de Ingeniería en Sistemas de Información y Desarrollador Web.Mi enfoque principal es la creación de soluciones innovadoras y experiencias de usuario excepcionales. A través de mis estudios, he adquirido una sólida comprensión de las metodologías de desarrollo de software, así como también las habilidades necesarias para diseñar y desarrollar aplicaciones web y móviles."
+    "bannerImg": "https://www.bacancytechnology.com/main-boot-5/images/microsoft-dynamics/xbanner.jpg,qv-1.pagespeed.ic.9rtc4C7yKw.jpg",
+    "aboutMe": "Me llamo Bruno Pizzi, soy estudiante de Ingeniería en Sistemas de Información y desarrollador web. Mi enfoque principal es la creación de soluciones innovadoras y experiencias de usuario excepcionales. A través de mis estudios, he adquirido una sólida comprensión de las metodologías de desarrollo de software, así como también las habilidades necesarias para diseñar y desarrollar aplicaciones web."
   },
 
   "educacion": [
@@ -30,6 +30,18 @@
       "aclaracion": "click en imagen para ver mas informacion",
       "strong": ["Javascript"],
       "link": ["gobstones", "Ruby"]
+    },
+    {
+      "id":3,
+      "nameItem": "Programacion web full-stack",
+      "cardReference": "#list-3",
+      "btnReference": "list-3-list",
+      "image": "../../assets/images/BulkResizePhotos.com/APLogo-20-20.png",
+      "time": "10/2022 - 05/2023",
+      "detalle": "Aqui adquirí habilidades y herramientas esenciales para el desarrollo de aplicaciones web. Me sumergí en el funcionamiento del desarrollo web, aprendiendo tanto sobre frontend estático como dinámico con Angular. También adquirí conocimientos en diseño y consultas a bases de datos con MySQL, así como conceptos de POO aplicados en Java, JSP y Servlets. Además, aprendí a crear APIs con Spring Boot y me introduje en el mundo de DevOps. Esta experiencia me permitió desarrollar una comprensión profunda del proceso de desarrollo de aplicaciones web y las habilidades técnicas necesarias para desempeñarme como programador web full-stack junior. ",
+      "aclaracion": "click en imagen para ver mas informacion",
+      "strong": [],
+      "link": []
     }
   ],
 
