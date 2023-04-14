@@ -40,17 +40,19 @@
                 <!-- Default form contact -->
                 <form id="formContact" class="text-center border border-light p-5" 
                 action="https://formspree.io/f/xayzlvjb" method="post" #formContact="ngForm"
-                ngForm  
-                >
+                (submit)="sendForm(formContact.form.value); formContact.resetForm()">
+                
 
-                  <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nombre" name="name">
+                  <input type="text" id="defaultContactFormName" class="form-control mb-4" 
+                  placeholder="Nombre" name="name" ngModel>
 
-                  <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail" name="_replyto">
+                  <input type="email" id="defaultContactFormEmail" class="form-control mb-4"
+                   placeholder="E-mail" name="_replyto" ngModel>
 
                   <!-- Message -->
                   <div class="form-group">
                     <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"
-                      placeholder="Mensaje" name="message"></textarea>
+                      placeholder="Mensaje" name="message" ngModel></textarea>
                   </div>
 
 
