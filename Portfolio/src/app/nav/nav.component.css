@@ -9,3 +9,26 @@
     color: #64ffda;
 }
 
+#navContent {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #logo {
+    order: 0;
+
+}
+  
+  ul {
+    order: 1; /* Colocar el elemento en el segundo lugar */
+  }
+  
+  #login-section {
+    order: 2; /* Colocar el elemento en el tercer lugar */
+  }
+
+  #navbarTogglerDemo02{
+    display: flex;
+    justify-content: space-between !important;
+  }
+

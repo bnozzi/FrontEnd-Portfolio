@@ -1,4 +1,4 @@
-<div id="footer" class="bg-dark ">
+<div id="footer" class="bg-dark " >
 
     <footer class="d-flex justify-content-center align-items-center">
       <label for="" class=" text-light me-3"> Contactame! </label>
@@ -36,31 +36,29 @@
                 <h5 class="modal-title" id="exampleModalLabel">Enviame un correo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                <!-- Default form contact -->
-                <form id="formContact" class="text-center border border-light p-5" action="#!">
-
-                  <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nombre">
-
-                  <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
-
-                  <!-- Message -->
-                  <div class="form-group">
-                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"
-                      placeholder="Mensaje"></textarea>
-                  </div>
-
-
-                  <!-- Send button -->
-
-                </form>
-                <!-- Default form contact -->
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" form="formContact" class="btn btn-success" type="submit">Enviar</button>
-              </div>
+                <div class="modal-body">
+                  <!-- Default form contact -->
+                  <form id="formContact" class="text-center border border-light p-5" 
+                    action="https://formspree.io/f/xayzlvjb"
+                     method="post" #contactForm="ngForm">
+                
+                    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nombre" name="name" [(ngModel)]="name" required>
+                
+                    <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail" name="_replyto" [(ngModel)]="email" required>
+                
+                    <!-- Message -->
+                    <div class="form-group">
+                      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Mensaje" name="message" [(ngModel)]="message" required></textarea>
+                    </div>
+                
+                  </form>
+                  <!-- Default form contact -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-success" (click)="contactForm.ngSubmit.emit()" [disabled]="contactForm.invalid">Enviar</button>
+                </div>
+              
             </div>
           </div>
         </div>

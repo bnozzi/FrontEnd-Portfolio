@@ -277,6 +277,19 @@ footer {
   color: #64ffda;
   
 }
+
+.buttonEdit.del:hover, .buttonEdit.del:hover svg {
+color: red;
+fill: red;
+}
+.buttonEdit.edit:hover, .buttonEdit.edit:hover svg {
+  color: yellow;
+  fill: yellow;
+}
+.buttonEdit.add:hover, .buttonEdit.add:hover svg {
+  color: green;
+  fill: green;
+}
 .editSectionSVG:hover {
   cursor: pointer;
   color: #64ffda;

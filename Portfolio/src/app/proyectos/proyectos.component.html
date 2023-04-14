@@ -42,7 +42,7 @@
 
                 <div class="d-flex justify-content-center" *ngIf="isLogedIn()">
 
-                  <button class="btn btn-sm d-flex  align-items-center me-1 buttonEdit"
+                  <button class="btn btn-sm d-flex  align-items-center me-1 buttonEdit edit"
                   (click)="fillFormDataWithSpecificObject(proyecto)" data-bs-toggle="modal" 
                 data-bs-target="#editProyects"
                 >
@@ -53,7 +53,7 @@
                 </svg>
               </button>
 
-              <button class="btn btn-sm d-flex  align-items-center buttonEdit" 
+              <button class="btn btn-sm d-flex  align-items-center buttonEdit add " 
               data-bs-toggle="modal" (click)="setDefaultAtt()" data-bs-target="#addProyect" >
               Agregar   
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-square-fill ms-1" viewBox="0 0 16 16">
@@ -62,7 +62,7 @@
     
   </button>
 
-  <button class="btn btn-sm d-flex  align-items-center ms-1 buttonEdit" 
+  <button class="btn btn-sm d-flex  align-items-center ms-1 buttonEdit del" 
   (click)="deleteProyecto(proyecto);"
   >
     Eliminar
