@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class AboutMeService {
 
-  // public path:string='https://backend-portfolio-j7ck.onrender.com'
-  private path='http://localhost:8083';
+  public path:string='https://backend-portfolio-j7ck.onrender.com'
+  // private path='http://localhost:8083';
 
 
   constructor(private http: HttpClient) { }

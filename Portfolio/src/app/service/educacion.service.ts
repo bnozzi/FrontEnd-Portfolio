@@ -8,8 +8,8 @@ import { AuthInterceptor } from './auth-interceptor.interceptor';
   providedIn: 'root'
 })
 export class EducacionService {
-  private path='http://localhost:8083';
-  // private path="https://backend-portfolio-j7ck.onrender.com"
+  //private path='http://localhost:8083';
+   private path="https://backend-portfolio-j7ck.onrender.com"
   constructor(private http: HttpClient ) { }
 
   public getEducacion(): Observable<any> {

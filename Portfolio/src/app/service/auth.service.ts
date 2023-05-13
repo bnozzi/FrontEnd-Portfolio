@@ -11,7 +11,7 @@ export class AuthService {
   
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
   private currentUser = {};
-  private path='http://localhost:8083';
+  private path='https://backend-portfolio-j7ck.onrender.com';
 
 
   public constructor(private http: HttpClient, public router: Router) {}
