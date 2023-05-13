@@ -1,12 +1,13 @@
 
 .loginbtn{
-    background: #010112;
-    color: white
+    background-color: #64ffdbd8;
+    color: black
 }
 
 .loginbtn:hover{
-    transition: color 1.5s ease-out;
-    color: #64ffda;
+    transition: color .5s ease-out;
+    background-color: #64ffdbfc;
+    color: grey;
 }
 
 #navContent {
@@ -26,9 +27,14 @@
   #login-section {
     order: 2; /* Colocar el elemento en el tercer lugar */
   }
+  
 
-  #navbarTogglerDemo02{
-    display: flex;
-    justify-content: space-between !important;
+ 
+  
+
+  @media (max-width: 768px) {
+    #nav-links{
+      align-items:center;
+    }
   }
 

@@ -10,13 +10,15 @@ import { SkillsComponent } from './skills/skills.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { EditComponent } from './edit/edit.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 
-import { NgModel, FormsModule } from '@angular/forms';
+import { NgModel, FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 import { AuthInterceptor } from './service/auth-interceptor.interceptor';
+import { EditEducacionComponent } from './edit-educacion/edit-educacion.component';
+import { AddEducationComponent } from './add-education/add-education.component';
 
 
 @NgModule({
@@ -28,9 +30,10 @@ import { AuthInterceptor } from './service/auth-interceptor.interceptor';
     EducacionComponent,
     SkillsComponent,
     FooterComponent,
-    EditComponent,
     LoginComponent,
     PortfolioComponent,
+    EditEducacionComponent,
+    AddEducationComponent,
 
         
     
@@ -41,7 +44,8 @@ import { AuthInterceptor } from './service/auth-interceptor.interceptor';
     HttpClientModule,
     CommonModule,
     AppRoutingModule,
-    FormsModule,    
+    FormsModule,
+    ReactiveFormsModule  
 
     
   ],

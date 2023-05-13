@@ -8,34 +8,22 @@ import { User } from '../clases/auth/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private endpoint: string = 'http://localhost:4000/api';
+  
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
   private currentUser = {};
+  private path='http://localhost:8083';
+
 
   public constructor(private http: HttpClient, public router: Router) {}
 
-  // Sign-up
-  public signUp(user: User): Observable<any> {
-    let api = `${this.endpoint}/register-user`;
-    return this.http.post(api, user).pipe(catchError(AuthService.handleError));
+  setCurrentUser(user: any) {
+    this.currentUser = user;
   }
 
   // Sign-in
-  public signIn(user: User) {
+  public signIn(user: User) :Observable<any>{
     return this.http
-      .post<any>(`${this.endpoint}/signin`, user)
-      .subscribe((res: any) => {
-        console.log("logeo Exitoso")
-        
-        localStorage.setItem('access_token', res.token);
-        this.router.navigate([""])
-        this.currentUser = res;
-        
-        
-        // this.getUserProfile(res._id).subscribe((res) => {
-        //   this.router.navigate(['user-profile/' + res.msg._id]);
-        //});
-      });
+      .post(this.path+'/login', user)
   }
 
   getToken() {
@@ -55,15 +43,7 @@ export class AuthService {
   }
 
   // User profile
-  public getUserProfile(id: any): Observable<any> {
-    let api = `${this.endpoint}/user-profile/${id}`;
-    return this.http.get(api, { headers: this.headers }).pipe(
-      map((res) => {
-        return res || {};
-      }),
-      catchError(AuthService.handleError)
-    );
-  }
+ 
 
   // Error
   private static handleError(error: HttpErrorResponse) {
@@ -78,3 +58,5 @@ export class AuthService {
     return throwError(msg);
   }
 }
+
+

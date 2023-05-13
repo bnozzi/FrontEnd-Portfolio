@@ -7,12 +7,12 @@
           </a>
         </div>
         <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" id="togle">
+          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon "></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
 
-          <ul id="nav-links" class="navbar-nav mx-auto ">
+          <ul id="nav-links" class="navbar-nav mx-auto justify-content-center  ">
 
 
             <li class="nav-item " data-mdb-toggle="animation" data-mdb-animation-reset="true">
@@ -32,7 +32,7 @@
             </li>
           </ul>
 
-          <div id="login-section" class="navbar-nav d-flex align-items-center ">
+          <div id="login-section" class="navbar-nav d-flex align-items-center justify-content-center ">
             <!-- <a href="https://github.com/bnozzi" target="_blank" rel="noopener noreferrer">
           <svg class="me-2 mb-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
             class="bi bi-github" viewBox="0 0 16 16">
@@ -56,10 +56,10 @@
               </svg>
             </a>
         -->
-            <button   *ngIf="!isLogedIn()" routerLink="/login" class="btn  d-block mx-auto ms-2 loginbtn"  routerLinkActive="active" ariaCurrentWhenActive="page">
+            <button   *ngIf="!isLogedIn()" routerLink="/login" class="btn btn-sm d-block mx-auto  loginbtn"  routerLinkActive="active" ariaCurrentWhenActive="page">
               Login
             </button>
-            <button   *ngIf="isLogedIn()" type="submit" id="submitbtn" class="btn  d-block mx-auto ms-2 loginbtn"  (click)="logout()"> loguot </button>
+            <button   *ngIf="isLogedIn()" type="submit" id="submitbtn" class="btn btn-sm  d-block mx-auto  loginbtn"  (click)="logout()"> Loguot </button>
             <!-- <a  id="LoginInput" class="btn text-light  d-flex" style="background-color: #010112;"  routerLink="/login"  routerLinkActive="active" ariaCurrentWhenActive="page"> -->
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" -->
                 <!-- class="bi bi-person-fill" viewBox="0 0 16 16"> -->

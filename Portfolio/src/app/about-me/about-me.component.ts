@@ -2,49 +2,81 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Persona } from '../clases/edit/persona';
 import { AuthService } from '../service/auth.service';
 import { GetDataService } from '../service/get-data.service';
+import { AboutMeService } from '../service/about-me.service';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
-  styleUrls: ['./about-me.component.css']
+  styleUrls: ['./about-me.component.css'],
 })
 export class AboutMeComponent implements OnInit {
-updateTemplate() {
-this.aboutMeObject.aboutMe=this.profileImg
-this.aboutMeObject.aboutMe=this.bannerImg
-this.aboutMeObject.aboutMe=this.descripcion
+  updateAboutMe() {
 
+    if(this.formularioAboutMe.valid){
+      this.loading=true;
+    this.aboutmeData.updateAboutMe(this.formularioAboutMe.value).subscribe(
+      (response) => {
+        this.mensajeResponse = response.mensaje;
+        this.changeColorAlert('alert-warning');
+        this.ngOnInit();
+        this.loading=false;
+      },
+      (error) => {
+        this.mensajeResponse = error.error.message;
+        this.changeColorAlert('alert-danger');
+        this.loading=false;
 
-
-}
-  
-  aboutMe:any;
-  aboutMeObject!:Persona
-profileImg: string=""
-bannerImg: string=""
-descripcion: string=""
-  constructor(private aboutmeData:GetDataService ,private auth:AuthService ) {
-    // this.aboutMe
+      }
+    );
   }
+
+  }
+
+  aboutMe: any;
+  formularioAboutMe!: FormGroup;
+  colorAlert: string = '';
+  mensajeResponse: string = '';
+  loading = false;
+
+  changeColorAlert(color: string) {
+    this.colorAlert = color;
+  }
+
+  constructor(
+    private aboutmeData: AboutMeService,
+    private auth: AuthService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    this.aboutmeData.obtenerDatos().subscribe(data =>{
-    
-      this.aboutMe=data.PersonalData
-      this.aboutMeObject=new Persona(this.aboutMe.name,this.aboutMe.profileImg,
-        this.aboutMe.bannerImg, this.aboutMe.aboutMe)
+    this.aboutmeData.getAboutMe().subscribe((data) => {
+      this.aboutMe = data;
 
-        this.profileImg=this.aboutMeObject.profileImg;
-        this.bannerImg=this.aboutMeObject.bannerImg;
-        this.descripcion=this.aboutMeObject.aboutMe;
-
+      this.formularioAboutMe = this.formBuilder.group({
+        imagenPerfil: [this.aboutMe.imagenPerfil || '', Validators.required],
+        bannerImagen: [this.aboutMe.bannerImagen || '', Validators.required],
+        descripcion: [this.aboutMe.descripcion || '', Validators.required],
+      });
     });
-
   }
- isLogedin(){
-  return this.auth.isLoggedIn
- }  
 
+  get ImagenPerfil() {
+    return this.formularioAboutMe.get('imagenPerfil');
+  }
+  get BannerImagen() {
+    return this.formularioAboutMe.get('bannerImagen');
+  }
+  get Decripcion() {
+    return this.formularioAboutMe.get('descripcion');
+  }
 
-
+  isLogedin() {
+    return this.auth.isLoggedIn;
+  }
 }

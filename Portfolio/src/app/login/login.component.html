@@ -1,36 +1,47 @@
 <app-nav></app-nav>
-  <div id="bodyHeight" >
-    <div class="container " id="login-containers"   > <!--data-aos="fade-up"-->
-      
-      <form action="http://127.0.0.1:5000/login/auth" method="post">
-        <div class="form-group w-50 px-5 mx-auto mt-5  pb-2  bg-light border border-dark border-1 ">
-          <h5 class=" text-center">Login</h5>
-  
-          <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail"
-          name="email" [(ngModel)]="email" >
-  
-          <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password"
-          name="pw" [(ngModel)]="password" >
-  
-          <div class="d-flex justify-content-around">
-            <div>
-              <div class="custom-control ">
-                <input type="checkbox" class="form-check-input border-dark  " id="defaultLoginFormRemember">
-                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
-              </div>
-            </div>
-            <div>
-              <a href="">Forgot password?</a>
-            </div>
+<div id="bodyHeight">
+  <div class="container " id="login-containers"> <!--data-aos="fade-up"-->
+
+    <form [formGroup]="formularioLogin">
+      <div class="form-group w-50 px-5 mx-auto mt-5    pb-2 bg-light border border-dark border-1 ">
+        <h5 class=" text-center">Login</h5>
+
+        <div class="mb-3">
+          <label for="defaultLoginFormEmail" class="form-label"> Email </label>
+          <input type="email" id="defaultLoginFormEmail" class="form-control" name="email"
+           formControlName="email" (focus)="mensaje=''">
+          <div *ngIf="Email?.errors && Email?.touched">
+            <p *ngIf="Email?.hasError('required')" class="text-danger"> Este campo es obligatorio</p>
+            
+            <p *ngIf="Email?.errors?.['email']" class="text-danger"> Email inválido </p>
           </div>
-  
-          <button type="submit" id="submitbtn" class="btn  d-block mx-auto mt-2 "  (click)="login()"> Login </button>
-
-          
         </div>
-      </form>
-      
-  
-    </div>
-  </div>
+        
 
+        <div class="mb-3">
+          <label for="">Contraseña</label>
+          <input type="password" id="defaultLoginFormPassword" class="form-control " name="contraseña"
+            formControlName="contraseña" (focus)="mensaje=''">
+            <div *ngIf="Contrasenia?.errors && Contrasenia?.touched" >
+              <p *ngIf="Contrasenia?.hasError('required')" class="text-danger"> Este campo es obligatorio</p>
+            </div>
+    
+        </div>
+
+        <div *ngIf="mensaje">
+          <p class="text-danger">{{mensaje}}</p>
+        </div>
+
+        <button type="submit" id="submitbtn" class="btn  d-block mx-auto mt-2 " (click)="login(formularioLogin)" >
+          Iniciar Sesion 
+          <span *ngIf="loading" class="spinner-border spinner-border-sm ms-2"></span>
+        
+        </button>
+
+
+      </div>
+    </form>
+
+
+  </div>
+</div>

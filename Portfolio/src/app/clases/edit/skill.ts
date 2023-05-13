@@ -1,12 +1,14 @@
 export class Skill {
-    skill!:string;
+    nombre!:string;
     disableEditSkill:boolean=true;
 constructor(skill:string){
-    this.skill = skill;
+    this.nombre = skill;
 }
 
 editName(name:string){
-this.skill=name
+this.nombre=name
 }
+
+
 
 }

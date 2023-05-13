@@ -1,198 +1,174 @@
-<div id="educacion" class="  mt-5  g-col-8 " >
-  <h4 class="h4 text-light text-center mb-3 "> Educacion</h4>
-  <div class="row">
-    <div class="col-4">
-      <div class="list-group list-group-flush bg-dark" id="list-tab" role="tablist">
+<div class="mt-5" >
 
-        <!-- *objeto cargado -->
-        <button *ngFor="let title of listEducation;first as IF" 
-          class="list-group-item list-group-item-action active  d-flex justify-content-between list-group-item-dark align-items-center"
-          id="list-home-list" data-bs-toggle="list" [attr.href]="title.cardReference" role="tab" [attr.aria-controls]="title.cardReference.replace('#','')"
-          onclick="hideSvg()" (click)="buttonEducation.classList.add('active')"  [ngClass]="{'active': IF} "  #buttonEducation> {{title.nameItem}}
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16" style="display: none;">
-            <path
-              d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-          </svg>
-        </button>
+  <!-- add -->
+  <div id="mensajeResponse" *ngIf="mensajeResponse!=''" class="w-50 mx-auto  alert alert-dismissible fade show"
+    [ngClass]="colorAlert"
+  role="alert">
+  <svg *ngIf="colorAlert=='alert-warning'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+  </svg>
 
+  <svg *ngIf="colorAlert=='alert-success'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+  </svg>
 
-
-        </div>
-    </div>
-    <div class="col-8 text-light">
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show" [id]="educacionItem.cardReference.replace('#','')" role="tabpanel" aria-labelledby="list-home-list"
-          *ngFor="let educacionItem of listEducation; first as IF"  [ngClass]="{'active show' : IF}">
-          <div class="card" style="width: 80%;">
-            <div class="card-img-top text-center">
-              <a href="">
-                <img [src]="educacionItem.image" class="" alt="...">
-              </a>
-
-            </div>
-            <div class="card-body">
-              <p class="card-text text-muted text-center">{{educacionItem.time}}</p>
-              <p class="card-text">
-                {{educacionItem.detalle}}  
-              </p>
-              <p class="card-text text-muted text-center"> <small>{{educacionItem.aclaracion}} </small></p>
-              
-            </div>
-          </div>
-
-          <div class="d-flex justify-content-center " *ngIf="isLogedin()" style="width: 80%;">
-
-            <button class="btn btn-sm align-items-center me-1 buttonEdit edit"
-            (click)="fillEditFormData(educacionItem)" data-bs-toggle="modal"
-            data-bs-target="#editEducation" > 
-            
-            Editar
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-square" viewBox="0 0 16 16">
-            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-          </svg>
-        </button>
-
-            
-        <button class="btn btn-sm   align-items-center me-1 buttonEdit add"
-        data-bs-toggle="modal" data-bs-target="#addEducation">
-        Añadir
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-          <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
-        </svg>
-      </button>
-
-
-      <button class="btn btn-sm   align-items-center me-1 buttonEdit del" 
-        (click)="deleteEducationObject(educacionItem.id);" >
-           eliminar 
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-             <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-            </svg>
-          </button>
-    </div>
-      
-      
-    </div>
-    
-
-
-      </div>
-    </div>
+  <svg *ngIf="colorAlert=='alert-danger'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+  </svg>
+    {{mensajeResponse}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="mensajeResponse=''"></button>
   </div>
+  
 
 </div>
 
 
 
 
+<div id="educacion" class="    g-col-8 ">
+  <h4 class="h4 text-light text-center mb-3 "> Educacion</h4>
+  <div class="row">
+    <div class="col-4">
+      <div class="list-group list-group-flush bg-dark" id="list-tab" role="tablist">
 
-   <!-- Modal add  -->
-   <div class="modal fade" id="addEducation" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="educationModalLabel">Añadir a seccion Educacion</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action=""  >
-            <!-- nombre   -->
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label" >Nombre de titulo o estudio </label>
-                <input type="text" class="form-control"   #nameNewEducation placeholder="">
-              </div>
+        <!-- *objeto cargado -->
 
-              <!-- imagen -->
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">imagen del la institucion  </label>
-                <input type="text" class="form-control" #imgNewEducation placeholder="link de la imagen">
-                <small>ó</small> <br>
-                <input type="file" name="" id="" value="seleccionar archivo">  
-              </div>
 
-              <!--tiempo desde hasta   -->
-              <div class="mb-3 ">
-                <label for="exampleInputEmail1" class="form-label">desde  mm/aaaa</label>
-                <input type="month" class="form-control"  #desde (input)="hasta.min=desde.value">
-                <label for="exampleInputEmail1" class="form-label" >hasta  mm/aaaa </label>
-                <input type="month" class="form-control" name="" #hasta>
-
-              </div>
-
-  <!-- detalle   -->
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">detalle sobre el titulo o educacion </label>
-    <textarea name="" id="" #detalleNewEducacion class="form-control"></textarea>
-  </div>
+  <button *ngFor="let title of educacion;first as IF ; let i =index;"
+  class="list-group-item list-group-item-action active d-flex justify-content-between list-group-item-dark align-items-center"
+  id="list-{{i}}" data-bs-toggle="list" [attr.href]="'#tab-' + i" role="tab" 
+  [attr.aria-controls]="'tab-' + i" onclick="hideSvg()"
+   [ngClass]="{'active': IF}" >
+  {{title.titulo}} 
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+  class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16" style="display: none;">
+  <path
+  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+</svg>
+</button>
 
 
 
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary"  
-          (click)="listEducation.push(createEducationObject(nameNewEducation.value,imgNewEducation.value,desde.value+' - '+hasta.value,detalleNewEducacion.value))">Guardar cambios</button>
-        </div>
+
+
       </div>
     </div>
-  </div>
+    <div class="col-8 text-light">
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade" [id]="'tab-' + i" role="tabpanel"
+         *ngFor="let educacionItem of educacion; let i = index;"
+        [ngClass]="{'active show': activeTab === i}"
+        
+        >
+          <div class="card" style="width: 80%;">
+            <div class="card-img-top text-center">
+              <a href="">
+                <img [src]="educacionItem.imagen" class="" alt="...">
+              </a>
 
-  <!-- Modal Edit -->
-  <div class="modal fade" id="editEducation" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="educationModalLabel">Editar seccion Educacion</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action=""  >
-            <!-- nombre   -->
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nombre de titulo o estudio </label>
-                <input type="text" class="form-control" name="educationTitle" [(ngModel)]="titulo" placeholder="">
-              </div>
-
-              <!-- imagen -->
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">imagen del la institucion  </label>
-                <input type="text" class="form-control"  name="educationImage" [(ngModel)]="imagen" placeholder="link de la imagen">
-                <small>ó</small> <br>
-                <input type="file" name="" id="" value="seleccionar archivo">  
-              </div>
-
-              <!--tiempo desde hasta  -->
-              <div class="mb-3 " >
-                <label for=""> Actualmente? </label>
-                <input type="checkbox" (click)="actualmentePressed()" name="actualmente" [(ngModel)]="actualmente"  >
-              </div>
-
-              <div class="mb-3 " *ngIf="!actualmente">
-                <label for="exampleInputEmail1" class="form-label">desde  mm/aaaa</label>
-                <input type="month" class="form-control" name="dateFrom" [(ngModel)]="fechaDesde"  #desde (input)="hasta.min=desde.value">
-                <label for="exampleInputEmail1" class="form-label" >hasta  mm/aaaa </label>
-                <input type="month" class="form-control" name="dateTo" [(ngModel)]="fechaHasta" #hasta>
-              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text text-muted text-center" *ngIf="!educacionItem.actualmente">{{formatoMesAnio(educacionItem.tiempoDesde)}} - {{formatoMesAnio(educacionItem.tiempoHasta)}}</p>
+              <p class="card-text text-muted text-center" *ngIf="educacionItem.actualmente"> Actualmente </p>
               
+              <p class="card-text">
+                {{educacionItem.descripcion}}
+              </p>
+              <p class="card-text text-muted text-center"> <small>{{educacionItem.aclaracion}} </small></p>
 
-  <!-- detalle   -->
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">detalle sobre el titulo o educacion </label>
-    <textarea name="detail" [(ngModel)]="detalle" id="" class="form-control"></textarea>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center " *ngIf="isLogedin()" style="width: 80%;">
+
+            <button class="btn btn-sm align-items-center me-1 buttonEdit edit" (click)="changeColorAlert('alert-danger')"
+              routerLink="/editEducation/{{educacionItem.id}}" 
+              >
+              <!-- (click)="fillEditFormData(educacionItem.id)" -->
+
+              Editar
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-square"
+                viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg>
+            </button>
+
+
+           
+
+
+            <button class="btn btn-sm   align-items-center me-1 buttonEdit del" (click)="deleteEducation(educacionItem.id)">
+              Eliminar
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2 "></span>
+              <svg *ngIf="!loading" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash3-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+              </svg>
+            </button>
+          </div>
+
+
+        </div>
+    
+
+      </div>
+      
+
+    </div>
   </div>
+  <div class="d-flex justify-content-center mt-2" *ngIf="isLogedin()"> 
+
+    <button class="btn btn-sm align-items-center me-1 buttonEdit add"   routerLink="/addEducation">
+      Agregar Educacion
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-square-fill"
+      viewBox="0 0 16 16">
+      <path
+      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+    </svg>
+  </button>
+</div>
+</div>
 
 
-              <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
 
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary"  (click)="updateTemplate()">Guardar cambios</button>
-        </div>
+
+
+<!-- Modal add  -->
+<div class="modal fade" id="addEducation" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="educationModalLabel">Añadir a seccion Educacion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="editEducation" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="educationModalLabel">Editar seccion Educacion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
+</div>

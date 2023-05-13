@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Skill } from '../clases/edit/skill';
-import { Skills } from '../clases/edit/skills';
 import { AuthService } from '../service/auth.service';
 import { GetDataService } from '../service/get-data.service';
+import { SkillsService } from '../service/skills.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-skills',
@@ -10,98 +11,161 @@ import { GetDataService } from '../service/get-data.service';
   styleUrls: ['./skills.component.css'],
 })
 export class SkillsComponent implements OnInit {
-  skills: any;
-  listSkills: Array<Skills> = [];
-  auxListSkills: Array<Skills> = [];
-  editedSkill: any;
+loadingAdd=false;
+loadingDelete=false;
+loadingEdit=[];
 
-  constructor(private skillsData: GetDataService, private auth:AuthService) {}
-
-  ngOnInit(): void {
-    this.skillsData.obtenerDatos().subscribe((data) => {
-      this.skills = data.skills;
-
-      this.skills.forEach((skill: any) => {
-        const skillsObjectList: Skill[] = [];
-        const auxskillsObjectList: Skill[] = [];
-        skill.items.forEach((element: string) => {
-          skillsObjectList.push(new Skill(element));
-          auxskillsObjectList.push(new Skill(element));
-        });
-
-        this.listSkills.push(new Skills(skill.name, skillsObjectList.slice()));
-        this.auxListSkills.push(
-          new Skills(skill.name, auxskillsObjectList.slice())
-        );
-      });
-      // console.log(this.listSkills);
-
-      // console.log(this.auxListSkills);
-    });
+  deleteSkillFromList(skill: Skill) {
+    this.auxListSkills.splice(this.auxListSkills.indexOf(skill), 1);
+    this.formularioEditSkills
+      .get('habilidades')
+      ?.patchValue(this.ListOfNameOfSkills());
+    console.log(this.formularioEditSkills.value);
   }
 
-  skillSelected: any;
-
-  createCategory(nombreCategoria: string) {
-    this.auxListSkills.push(new Skills(nombreCategoria, []));
-  }
-  deleteCategory(category: Skills) {
-    if (
-      confirm(
-        'Are you sure you want to delete, will be deleted the skills too :c'
-      )
-    ) {
-      this.auxListSkills.splice(this.auxListSkills.indexOf(category), 1);
-    }
-  }
-
-  addSkill(categoria: Skills, skill: Skill) {
-    categoria.addSkill(skill);
-  }
-  crearSkill(skill: string) {
+  createSkill(skill: string) {
     return new Skill(skill);
   }
 
-  deleteSkill(categoria: Skills, skill: Skill) {
-    categoria.deleteSkill(skill);
+  addSkillToListObject(skill: any, formulario: FormGroup) {
+    this.auxListSkills.push(skill);
+
+    console.log(this.auxListSkills);
+    formulario.get('habilidades')?.patchValue(this.ListOfNameOfSkills());
+    console.log(formulario.value);
   }
 
-  saveChanges() {
+  ListOfNameOfSkills() {
+    let lista: any[] = [];
+    this.auxListSkills.forEach((skill: any) => {
+      lista.push(skill.nombre);
+    });
+    console.log(lista);
+    return lista;
+  }
 
-    if (confirm('sure?')) {
-      this.listSkills = []
-      // ? [{ "catgoria",[ {skills} ] }]
+  setFormularioBeforeSend(formulario: any) {
+    formulario.get('habilidades')?.patchValue(this.ListOfNameOfSkills());
+  }
 
-      console.log(JSON.parse(JSON.stringify(this.auxListSkills)))
-      JSON.parse(JSON.stringify(this.auxListSkills)).forEach((listSkill:any) => {
-        const skillsObjectList: Skill[] = [];
-        listSkill.skills.forEach((skill:any)=>{
-          skillsObjectList.push(new Skill(skill.skill))
-        })
+  whiteFormToAdd() {
+    this.formularioAddSkill.reset();
+    this.auxListSkills = [];
+  }
 
-        this.listSkills.push(new Skills(listSkill.categoria, skillsObjectList.slice()))
-        console.log(skillsObjectList)
-      })
-      console.log(this.listSkills)
-    } else {
-      this.auxListSkills =[] 
-      this.skills.forEach((skill: any) => {
-        const skillsObjectList: Skill[] = [];
-        skill.items.forEach((element: string) => {
-          skillsObjectList.push(new Skill(element));
-        });
+  fillForm(categoria: any) {
+    this.formularioEditSkills.patchValue(categoria);
+    this.defaultListSkills(categoria);
 
-        this.auxListSkills.push(new Skills(skill.name, skillsObjectList.slice()));
+    //console.log(this.auxListSkills)
+  }
+  defaultListSkills(categoria: any) {
+    this.auxListSkills = [];
+    categoria.habilidades.forEach((skill: any) => {
+      this.auxListSkills.push(this.createSkill(skill));
+    });
+  }
 
+  skills: any;
+  formularioEditSkills: FormGroup;
+  auxListSkills: Array<Skill> = [];
+
+  formularioAddSkill: FormGroup;
+  mensajeResponse: string = '';
+  colorAlert: string = 'alert-success';
+
+  changeColorAlert(color: string) {
+    this.colorAlert = color;
+  }
+
+  constructor(
+    private skillsData: SkillsService,
+    private auth: AuthService,
+    private formBuilder: FormBuilder
+  ) {
+    this.formularioEditSkills = formBuilder.group({
+      id: '',
+      habilidades: [],
+      nombre: '',
+    });
+
+    this.formularioAddSkill = formBuilder.group({
+      id: '',
+      habilidades: [],
+      nombre: '',
+    });
+  }
+
+  ngOnInit(): void {
+    this.skillsData.getSkills().subscribe((data) => {
+      this.skills = data.map((item: any) => {
+        return { ...item, loadingEdit: false, loadingDelete: false };
       });
-    }
-    //console.log(JSON.parse(JSON.stringify(  this.auxListSkills)))
-    //console.log(JSON.parse(JSON.stringify( this.listSkills)))
+    })
+    ;
+  }
+  
 
+  saveSkill(formulario: any) {
+    this.loadingAdd=true
+    this.setFormularioBeforeSend(formulario);
+    this.skillsData.addSkill(formulario.value).subscribe((data) => {
+      this.changeColorAlert('alert-success');
+      this.mensajeResponse=data.mensaje
+      this.ngOnInit();
+    this.loadingAdd=false
+
+    },
+    (err)=>{
+      this.loadingAdd=false
+
+    }
+    );
   }
 
-  isLogedin(){
-    return this.auth.isLoggedIn
-   }  
+  deleteSkill(categoria: any, id: any) {
+    categoria.loadingDelete=true
 
+    this.skillsData.deleteSkill(id).subscribe((data) => {
+      this.changeColorAlert('alert-danger');
+      this.mensajeResponse=data.mensaje
+      this.ngOnInit();
+      categoria.loadingDelete=false
+
+
+    },(err)=>{
+      categoria.loadingDelete=false
+
+    });
+  }
+
+  updateSkill(formulario: any, id: any) {
+    this.setFormularioBeforeSend(formulario);
+  this.skills.forEach((skill: any)=>{
+    if(skill.id==id){
+      skill.loadingEdit=true
+    }
+  })
+    this.skillsData.updateSkill(formulario.value, id).subscribe((data) => {
+      this.changeColorAlert('alert-warning');
+      this.mensajeResponse=data.mensaje
+      this.ngOnInit();
+      this.skills.forEach((skill: any)=>{
+        if(skill.id==id){
+          skill.loadingEdit=false
+        }
+      })
+    },err=>{
+      this.skills.forEach((skill: any)=>{
+        if(skill.id==id){
+          skill.loadingEdit=false
+        }
+      })
+
+    });
+  }
+
+  isLogedin() {
+    return this.auth.isLoggedIn;
+  }
 }

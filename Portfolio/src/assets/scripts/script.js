@@ -61,8 +61,12 @@ window.addEventListener("scroll", function (event) {
   }
 });
 
-// function to hide svg in listgroup when user clicks a button of the listgroup and set active the button
 
+
+// function to hide svg in listgroup when user clicks a button of the listgroup and set active the button
+window.addEventListener("load", function() {
+hideSvg();
+})
 function hideSvg() {
   // self.classList.add("active");
   let htmlButtonsCollection = document.getElementById("list-tab").children;

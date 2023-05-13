@@ -1,134 +1,239 @@
-<div id="skills" class="  mt-5  g-col-8 text-center  mb-5"  >
-    <h4 class="h4 text-light mb-5"> Habilidades</h4>
+<div class="mt-5">
 
-    <div id="skill-content" class="row gx-1 text-center text-light  ">
-      <div id="len" class="col-lg-3 col-sm-6    " *ngFor="let categoria of listSkills">
-        <label for="" class="mb-2 skill-titles">{{categoria.categoria}}</label>
-        <ul class="list-unstyled " >
-          <li class=""  *ngFor="let habilidad of categoria.skills" >
-            <small class="text-muted"> {{habilidad.skill}} </small></li>
-        </ul>
-      </div>
-    </div>
+  <!-- add -->
+  <div id="mensajeResponse" *ngIf="mensajeResponse!=''" class="w-50 mx-auto  alert alert-dismissible fade show"
+    [ngClass]="colorAlert" role="alert">
+    <svg *ngIf="colorAlert=='alert-warning'" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+      fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+      <path
+        d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+    </svg>
+
+    <svg *ngIf="colorAlert=='alert-success'" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+      fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+      <path
+        d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+    </svg>
+
+    <svg *ngIf="colorAlert=='alert-danger'" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+      fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+      <path
+        d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
+      <path
+        d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
+    </svg>
+    {{mensajeResponse}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+      (click)="mensajeResponse=''"></button>
+  </div>
+
+
 </div>
 
-<div class="d-flex justify-content-center mb-3" *ngIf="isLogedin()">
+<div id="skills" class=" g-col-8 text-center  mb-1">
+  <h4 class="h4 text-light mb-5"> Habilidades</h4>
 
-  <button class="btn btn-sm d-flex  align-items-center buttonEdit edit" 
-  data-bs-toggle="modal" data-bs-target="#editSkills">
-  Editar
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-square" viewBox="0 0 16 16">
-    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-  </svg>
-</button>
-</div>
+  <div id="skill-content" class="row gx-1 text-center text-light  ">
+    <div id="len" class="col-lg-3 col-sm-6    " *ngFor="let categoria of skills">
+      <label for="" class="mb-2 skill-titles">{{categoria.nombre}}</label>
+      <ul class="list-unstyled ">
+        <li class="" *ngFor="let habilidad of categoria.habilidades">
+          <small class="text-muted"> {{habilidad}} </small>
+        </li>
+      </ul>
+      <div class="d-flex justify-content-center mb-3" *ngIf="isLogedin()">
 
-  <!-- ?finalizado el edit Skill, queda realizar una funcion que guarde los cambios en el componente -->
-    <!-- Modal -->
-    <div class="modal fade" id="editSkills" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true" #editSkillModal>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="skillsModalLabel">Editar seccion Habilidades</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="">
-              <!-- profile image  -->
-              <label for="">Añadir, Editar o Eliminar categoria </label>
-              <ul class="list-group">
-                <li class="list-group-item  d-flex justify-content-between" *ngFor="let category of auxListSkills; index as i">
-                <input type="text" [disabled]="category.disableEditCategoria" name="{{category.categoria}}" [(ngModel)]="category.categoria" value="{{category.categoria}}" >
-
-                <div>
-  <!-- edit -->
-
-                <a class="editSectionSVG" *ngIf="category.disableEditCategoria"
-                (click)="category.disableEditCategoria=!category.disableEditCategoria; ">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill me-1" viewBox="0 0 16 16">
-                    <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                  </svg>
-                </a>
-                <!--  end edit -->
-                <a class="editSectionSVG"  *ngIf="!category.disableEditCategoria"
-                (click)="category.disableEditCategoria=!category.disableEditCategoria;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/>
-                </svg>
-              </a>
-  <!-- delete -->
-                <a class="editSectionSVG"  (click)="deleteCategory(category)">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                    <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                  </svg>
-                </a>
-                </div>
+        <button class="btn btn-sm d-flex  align-items-center buttonEdit edit" data-bs-toggle="modal"
+          data-bs-target="#editSkills" (click)="fillForm(categoria)">
+          Editar
+          <span *ngIf="categoria.loadingEdit" class="spinner-border spinner-border-sm mr-2 "></span>
 
 
+          <svg  *ngIf="!categoria.loadingEdit" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-square"
+            viewBox="0 0 16 16">
+            <path
+              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+            <path fill-rule="evenodd"
+              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+          </svg>
+        </button>
 
-                </li>
-              </ul>
-              <input type="" class="form-control mb-3" #nuevaCategoria placeholder="nueva categoria">
-              <button class="btn btn-success" (click)="createCategory(nuevaCategoria.value); nuevaCategoria.value=''"> añadir categoria </button> <br>
-
-              <label for=""> Añadir, Editar o Eliminar habilidad </label>
-
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label mb-3">seleccione categoria</label>
-                  <select name="selectCategorySkill"   class="form-control mb-3" [(ngModel)]="skillSelected">
-                   <option *ngFor="let category of auxListSkills">
-                    {{category.categoria}}
-                   </option>
-                  </select>
-
-                  <ul *ngFor="let category of auxListSkills; ">
-                    <li
-                     *ngIf="category.categoria==skillSelected" >
-                      <ul class="list-group" *ngFor="let skill of category.skills">
-                        <li class="list-group-item d-flex justify-content-between">
-<!-- todo modificar el name para enviar datos al servidor?  -->
-                        <input type="text"  [disabled]="skill.disableEditSkill" name="{{skill.skill}}" [(ngModel)]="skill.skill" value="{{skill.skill}}" >
-                        <div>
-              <!-- edit -->
-                            <a class="editSectionSVG" *ngIf="skill.disableEditSkill"
-                            (click)="skill.disableEditSkill=!skill.disableEditSkill;">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill me-1" viewBox="0 0 16 16">
-                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                              </svg>
-                            </a>
-                            <!--  end edit -->
-                            <a class="editSectionSVG"  *ngIf="!skill.disableEditSkill"
-                            (click)="skill.disableEditSkill=!skill.disableEditSkill; skill.editName(skill.skill)"
-                             >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square-fill" viewBox="0 0 16 16">
-                              <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/>
-                            </svg>
-                          </a>
-              <!-- delete -->
-                            <a class="editSectionSVG"  (click)="category.deleteSkill(skill)">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                              </svg>
-                            </a>
-                            </div>
-                        </li>
-                      </ul>
-                      <input type="" class="form-control mb-3" #nuevaSkill  placeholder="nueva skill ">
-                        <button  (click)="addSkill(category, crearSkill(nuevaSkill.value))"> añadir habilidad a {{skillSelected}} </button>
-                    </li>
-                  </ul>
+        <button class="btn btn-sm d-flex  align-items-center ms-1 buttonEdit del" (click)="deleteSkill(categoria,categoria.id)">
+          Eliminar
+          <span *ngIf="categoria.loadingDelete" class="spinner-border spinner-border-sm mr-2 "></span>
 
 
-                </div>
-
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" (click)="saveChanges(); " data-bs-dismiss="modal"
-              class="btn btn-primary">Guardar cambios</button>
-          </div>
-        </div>
+          <svg *ngIf="!categoria.loadingDelete" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-trash3-fill ms-1" viewBox="0 0 16 16">
+            <path
+              d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+          </svg>
+        </button>
       </div>
     </div>
+  </div>
+
+</div>
+
+<div class="d-flex justify-content-center mb-2" *ngIf="isLogedin()">
+  <button class="btn btn-sm d-flex  align-items-center buttonEdit add" data-bs-toggle="modal"
+    data-bs-target="#addSkills" (click)="whiteFormToAdd()">
+    Agregar habilidad
+    <span *ngIf="loadingAdd" class="spinner-border spinner-border-sm mr-2 "></span>
+
+
+    <svg *ngIf="!loadingAdd" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-square-fill ms-1"
+      viewBox="0 0 16 16">
+      <path
+        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+    </svg>
+
+  </button>
+
+
+
+</div>
+
+<!-- Modal Edit-->
+<div class="modal fade " id="editSkills" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true"
+  #editSkillModal>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="skillsModalLabel">Editar seccion Habilidades</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body mb-1">
+        <form [formGroup]="formularioEditSkills" class="mt-4">
+          <div class="form-group">
+            <label class="form-label">Nombre categoria</label>
+            <input type="text" class="form-control" formControlName="nombre">
+          </div>
+
+          <div class="form-group">
+            <label>Habilidades:</label>
+            <div *ngFor="let habilidad of auxListSkills">
+              <div class="input-group mb-1">
+                <input type="text" value="{{habilidad.nombre}}" #skillInput
+                  (input)="habilidad.editName(skillInput.value)" [disabled]="habilidad.disableEditSkill"
+                  class="form-control">
+                <button class="btn btn-outline-warning" *ngIf="habilidad.disableEditSkill" type="button"
+                  (click)="habilidad.disableEditSkill=false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil-fill mx-1 " viewBox="0 0 16 16">
+                    <path
+                      d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                  </svg>
+                </button>
+                <button class="btn btn-outline-success" *ngIf="!habilidad.disableEditSkill" type="button"
+                  (click)="habilidad.disableEditSkill=true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-check-square-fill mx-1" viewBox="0 0 16 16">
+                    <path
+                      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z" />
+                  </svg>
+                </button>
+                <button class="btn btn-outline-danger" type="button" (click)="deleteSkillFromList(habilidad)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red"
+                    class="bi bi-trash3-fill mx-1" viewBox="0 0 16 16">
+                    <path
+                      d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <input type="" class="form-control mb-3" placeholder="nueva skill" #newSkill>
+            <button class="btn btn-success"
+              (click)="addSkillToListObject(createSkill(newSkill.value),formularioAddSkill);newSkill.value=''; newSkill.focus()">
+              añadir habilidad a {{formularioEditSkills.value.nombre}}</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-success"
+          (click)="updateSkill(formularioEditSkills,formularioEditSkills.value.id)">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Add -->
+<div class="modal fade " id="addSkills" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true"
+  #editSkillModal>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="skillsModalLabel">Editar seccion Habilidades</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formularioAddSkill">
+          <!-- profile image  -->
+          <div class="mb-3 ">
+            <label for="" class="form-label">Nombre categoria</label><br>
+            <div class="d-flex">
+              <input type="text" class="form-control" formControlName="nombre">
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label for=""> Habilidades: </label>
+
+            <div class="" *ngFor="let habilidad of auxListSkills">
+              <!-- todo modificar el name para enviar datos al servidor?  -->
+              <div class="mb-1 input-group">
+
+
+                <input type="text" value="{{habilidad.nombre}}" #skillInput
+                  (input)="habilidad.editName(skillInput.value)" [disabled]="habilidad.disableEditSkill"
+                  class="form-control">
+
+                <div class="d-flex  justify-content-center align-items-center ">
+                  <!-- edit -->
+                  <button class="btn btn-outline-warning" *ngIf="habilidad.disableEditSkill" type="button"
+                    (click)="habilidad.disableEditSkill=false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-pencil-fill mx-1 " viewBox="0 0 16 16">
+                      <path
+                        d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                    </svg>
+                  </button>
+                  <button class="btn btn-outline-success" *ngIf="!habilidad.disableEditSkill" type="button"
+                    (click)="habilidad.disableEditSkill=true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-check-square-fill mx-1" viewBox="0 0 16 16">
+                      <path
+                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z" />
+                    </svg>
+                  </button>
+                  <button class="btn btn-outline-danger" type="button" (click)="deleteSkillFromList(habilidad)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red"
+                      class="bi bi-trash3-fill mx-1" viewBox="0 0 16 16">
+                      <path
+                        d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+
+            </div>
+            <input type="" class="form-control mb-3" placeholder="nueva skill" #newSkillAdd>
+            <button class="btn btn-success"
+              (click)="addSkillToListObject(createSkill(newSkillAdd.value),formularioAddSkill);newSkillAdd.value=''; newSkillAdd.focus()">
+              añadir habilidad a {{formularioAddSkill.value.nombre}}</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" data-bs-dismiss="modal" class="btn btn-success"
+          (click)="saveSkill(formularioAddSkill)">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>

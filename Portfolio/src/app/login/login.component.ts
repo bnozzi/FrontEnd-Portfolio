@@ -2,54 +2,66 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../clases/auth/user';
 import { AuthService } from '../service/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
- 
-
-  constructor( 
+  formularioLogin: FormGroup;
+  mensaje: string = '';
+loading: any;
+  constructor(
     public authService: AuthService,
-    public router: Router) { }
-
-    user:User=new User();
-    email!:string;
-    password!:string;
-
-  ngOnInit(): void {
-    let defaultUser=new User();
-    defaultUser._id="640e51bba352dcc404bc9f38"
-    defaultUser.name="bruno"
-    defaultUser.email="test@test"
-    defaultUser.password="admin"
-
-    this.authService.signUp(defaultUser).subscribe((res) => {
-      if (res.result) {
-        console.log("registro exitoso")
-      }})
+    public router: Router,
+    public formBuilder: FormBuilder,
+    
+  ) {
+    this.formularioLogin = formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      contraseña: ['', [Validators.required]],
+    });
   }
 
-  login(){
-    this.user._id="0"
-    this.user.email=this.email
-    this.user.password=this.password
-    this.user.name="bruno"
-    this.authService.signIn(this.user)
+  ngOnInit(): void {}
+  get Email() {
+    return this.formularioLogin.get('email');
+  }
 
+  get Contrasenia() {
+    return this.formularioLogin.get('contraseña');
+  }
+
+  login(formulario: FormGroup) {
+    //console.log(formulario.value)
+    if (formulario.valid) {
+      this.loading=true
+      this.authService.signIn(formulario.value).subscribe(
+        (res: any) => {
+          console.log('logeo Exitoso');
+
+          localStorage.setItem('access_token', res.token);
+          //this.router.navigate([""])
+          this.authService.setCurrentUser(res);
+          this.loading=false
+          //this.currentUser = res;
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          // console.log(error);
+          this.mensaje=error.error.error  
+          this.loading=false
+
+        }
+      );
+    }
   }
 
   logout() {
-    this.authService.doLogout()
+    this.authService.doLogout();
   }
 
-  //? puedo logearme y generar un token
-  
-  //todo | falta mostrar los contenidos segun la existencia del tokken 
-
-
-
+  //todo | falta mostrar los contenidos segun la existencia del tokken
 }

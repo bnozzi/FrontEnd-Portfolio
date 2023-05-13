@@ -1,0 +1,104 @@
+<app-nav></app-nav>
+
+
+
+<div class="container ">
+  <div class="row">
+
+    
+
+    <div id="mensajeResponse" *ngIf="response!=''" class="w-50 mx-auto mt-2 text-start alert alert-warning alert-dismissible fade show "
+    role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+    </svg>
+    {{response}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="response=''"></button>
+    </div>
+    <div class="col-md-6 offset-md-3 bg-light p-3 mb-5">
+      <div *ngIf="!formLoaded" id="loading-container" class="d-flex justify-content-center ">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <!-- <div class="loading-text">Cargando datos</div> -->
+      </div>
+      <p class="h4">Editar educación</p>
+
+      <form [formGroup]="formEduEdit">
+        <!-- Nombre del título o estudio -->
+        <div class="form-group">
+          <label for="titulo">Nombre de título o estudio:</label>
+          <input type="text" class="form-control" id="titulo" formControlName="titulo" name="titulo"
+            placeholder="Escriba aquí el nombre del título o estudio">
+          <div *ngIf="TituloEdit?.errors && TituloEdit?.touched" class="text-danger">
+            <p *ngIf="TituloEdit?.hasError('required')"> El campo es requerido </p>
+          </div>
+        </div>
+
+        <!-- Imagen de la institución -->
+        <div class="form-group">
+          <label for="imagen">Imagen de la institución:</label>
+          <input type="text" class="form-control" id="imagen" formControlName="imagen" name="imagen"
+            placeholder="Pegue aquí el enlace de la imagen">
+            <div *ngIf="ImagenEdit?.errors && ImagenEdit?.touched" class="text-danger">
+              <p *ngIf="ImagenEdit?.hasError('required')"> El campo es requerido </p>
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" formControlName="actualmente" id="actualmente"
+              #actualmenteCheckAdd (change)="clearValidatorsIfActualmente()">
+            <label for="actualmente" class="form-check-label">Actualmente</label>
+          </div>
+        </div>
+
+
+        <!-- Tiempo desde y hasta -->
+        <div class="mb-3" *ngIf="!actualmenteCheckAdd.checked">
+
+          <div class="form-group">
+            <label for="desde">Desde:</label>
+            <input type="date" class="form-control" id="desde" formControlName="tiempoDesde" name="tiempoDesde" #desde required
+              (input)="hasta.min=desde.value">
+              <div *ngIf="TiempoDesdeEdit?.errors && TiempoDesdeEdit?.touched" class="text-danger">
+                <p *ngIf="TiempoDesdeEdit?.hasError('required')"> El campo es requerido </p>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="hasta">Hasta:</label>
+            <input type="date" class="form-control" id="hasta" formControlName="tiempoHasta" name="tiempoHasta" #hasta required>
+            <div *ngIf="TiempoHastaEdit?.errors && TiempoHastaEdit?.touched" class="text-danger">
+              <p *ngIf="TiempoHastaEdit?.hasError('required')"> El campo es requerido </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detalle del título o educación -->
+        <div class="form-group">
+          <label for="descripcion">Detalle sobre el título o educación:</label>
+          <textarea class="form-control" id="descripcion" formControlName="descripcion" name="descripcion"
+            rows="5"></textarea>
+            <div *ngIf="DescripcionEdit?.errors && DescripcionEdit?.touched" class="text-danger">
+              <p *ngIf="DescripcionEdit?.hasError('required')"> El campo es requerido </p>
+            </div>
+        </div>
+
+        <div *ngIf="failSendForm">
+          <p class="text-danger">Complete los campos requeridos</p>
+
+        </div>
+        <!-- Botón de guardar cambios -->
+        <div class="d-grid gap-2">
+        <button type="button" class="btn btn-primary" (click)="updateEducation(formEduEdit)">
+          Guardar cambios
+          <span *ngIf="loading" class="spinner-border spinner-border-sm ms-2"></span>
+        
+        </button>
+         </div>
+        </form>
+    </div>
+  </div>
+</div>

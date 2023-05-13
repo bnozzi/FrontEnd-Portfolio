@@ -1,93 +1,126 @@
 <div id="aboutMe" class="">
 
-    <div class="card bg-dark text-white ">
-      <div id="bannerImgCont ">
-<!-- https://www.w3schools.com/w3images/lights.jpg -->
-        <img id=""  [src]="aboutMeObject.bannerImg" class="card-img" #banner alt="banner" height="400" />
-      </div>
-      <div class="card-img-overlay ">
+  <div class="card bg-dark text-white ">
+    <div id="bannerImgCont ">
+      <!-- https://www.w3schools.com/w3images/lights.jpg -->
+      
+      <img id="" [src]="aboutMe.bannerImagen" class="card-img" #banner alt="banner" height="400" style="width: 100%;"/>
+    </div>
+    <div class="card-img-overlay ">
 
-        <div id="bannerContent" class="d-flex justify-content-between align-items-center " > <!--data-aos="fade-left" data-aos-delay="500"-->
+      <div id="bannerContent" class="d-flex justify-content-between align-items-center ">
+        <!--data-aos="fade-left" data-aos-delay="500"-->
 
-          <img id="bannerImgProfile"  [src]="aboutMeObject.profileImg" #perfil alt="" class="ms-5">
+        <img id="bannerImgProfile" [src]="aboutMe.imagenPerfil"  alt="" class="ms-5">
 
-          <div id="bannerText" class=" text-center ">
-            <h5 class="card-title "> ¡Bienvenido/a a mi portfolio!</h5>
-            <p class="card-text" id="AboutMe-card-text">
-              {{aboutMeObject.aboutMe}}
-              <!-- Con mi conocimiento técnico, mi habilidad para resolver problemas y mi enfoque en el usuario, estoy seguro
+        <div id="bannerText" class=" text-center ">
+          <h5 class="card-title "> ¡Bienvenido/a a mi portfolio!</h5>
+          <p class="card-text" id="AboutMe-card-text">
+            {{aboutMe.descripcion}}
+            <!-- Con mi conocimiento técnico, mi habilidad para resolver problemas y mi enfoque en el usuario, estoy seguro
               de poder contribuir con soluciones innovadoras e impactar positivamente en cualquier empresa o proyecto en
               el que me involucre. -->
-                
-            </p>
-            <div class="d-flex justify-content-center" *ngIf="isLogedin()" >
-              <button class="btn btn-sm d-flex  align-items-center buttonEdit edit" data-bs-toggle="modal" data-bs-target="#editAboutMe">
-                 Editar 
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-square ms-1" viewBox="0 0 16 16">
-                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                    </svg>
-              
-              </button>
-            </div>
-              
-          </div>
 
-         
-          
+          </p>
+          <div class="d-flex justify-content-center" *ngIf="isLogedin()">
+            <button class="btn btn-sm d-flex  align-items-center buttonEdit edit" data-bs-toggle="modal"
+              data-bs-target="#editAboutMe">
+              Editar
+              <span *ngIf="loading" class="spinner-border spinner-border-sm ms-2"></span>
+              <svg *ngIf="!loading" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                class="bi bi-pencil-square ms-1" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg>
+
+            </button>
+          </div>
+          <div id="mensajeResponse" *ngIf="mensajeResponse!=''" class="w-50 mx-auto mt-2 text-start alert alert-dismissible fade show "
+          [ngClass]="colorAlert"
+        role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg>
+          {{mensajeResponse}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="mensajeResponse=''"></button>
         </div>
 
+        </div>
+
+
+
       </div>
-      
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="editAboutMe" tabindex="-1" aria-labelledby="editAboutMeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="AboutMeModalLabel">Editar seccion Sobre mi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- ACTION -->
+
+        <form [formGroup]="formularioAboutMe">
+          <!-- profile image  -->
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">imagen de perfil </label>
+            <input type="text" class="form-control" formControlName="imagenPerfil" name="imagenPerfil" placeholder="link de la imagen">
+            <div *ngIf=" ImagenPerfil?.errors && ImagenPerfil?.touched" class="text-danger">
+              <p *ngIf="ImagenPerfil?.hasError('required')">
+                El campo es requerido
+              </p>
+            </div>
+            <!-- <small>ó</small> <br> -->
+            <!-- <input type="file" name="" id="" value="seleccionar archivo"> -->
+          </div>
+
+          <!-- banner image -->
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">imagen del banner </label>
+            <input type="text" class="form-control" formControlName="bannerImagen" name="bannerImagen" 
+              placeholder="link de la imagen">
+
+              <div *ngIf=" BannerImagen?.errors && BannerImagen?.touched" class="text-danger">
+                <p *ngIf="BannerImagen?.hasError('required')">
+                  El campo es requerido
+                </p>
+              </div>
+            <!-- <small>ó</small> <br> -->
+            <!-- <input type="file" name="" id="" value="seleccionar archivo"> -->
+          </div>
+
+          <!--about me  -->
+          <div class="mb-3 ">
+            <label for="exampleInputEmail1" class="form-label">Descripcion sobre mi </label>
+            <textarea class="form-control" id="message-text" formControlName="descripcion" name="descripcion"
+              placeholder="descripcion"></textarea>
+              <div *ngIf=" Decripcion?.errors && Decripcion?.touched" class="text-danger">
+                <p *ngIf="Decripcion?.hasError('required')">
+                  El campo es requerido
+                </p>
+              </div>
+          </div>
+          <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="updateAboutMe();" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
+      </div>
     </div>
   </div>
-
-
-        
-    
-    <!-- Modal -->
-      <div class="modal fade" id="editAboutMe" tabindex="-1" aria-labelledby="editAboutMeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="AboutMeModalLabel">Editar seccion Sobre mi</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="">
-                <!-- profile image  -->
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">imagen de perfil </label>
-                    <input type="text" class="form-control"  name="imgPerfil" [(ngModel)]="profileImg"  placeholder="link de la imagen">
-                    <small>ó</small> <br>
-                    <input type="file" name="" id="" value="seleccionar archivo">
-                  </div>
-    
-                  <!-- banner image -->
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">imagen del banner </label>
-                    <input type="text" class="form-control"  name="banner" [(ngModel)]="bannerImg"  placeholder="link de la imagen">
-                    <small>ó</small> <br>
-                    <input type="file" name="" id="" value="seleccionar archivo">  
-                  </div>
-    
-                  <!--about me  -->
-                  <div class="mb-3 ">
-                    <label for="exampleInputEmail1" class="form-label">Descripcion sobre mi </label>
-                   <textarea class="form-control" id="message-text" name="detalle" [(ngModel)]="descripcion" placeholder="descripcion"></textarea>
-    
-                  </div>
-                  <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
-    
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateTemplate();
-               banner.setAttribute('src',bannerImg); 
-               perfil.setAttribute('src',profileImg);
-              ">Guardar cambios</button>
-            </div>
-          </div>
-        </div>
-      </div>
+</div>
