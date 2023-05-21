@@ -35,6 +35,7 @@ Para este proyecto use las siguientes tecnologias :
 
 ## Aclaracion
 Las peticiones se hacen al backend implementedo en [este](https://github.com/bnozzi/BackEnd-Portfolio/tree/spring-deploy) repositorio
+Si las peticiones devueven un error 500  entonces el jwt es invalido o expiró por lo que tendrá que iniciar sesion nuevamente 
 
 
 
