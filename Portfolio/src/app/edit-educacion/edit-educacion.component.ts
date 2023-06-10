@@ -35,6 +35,8 @@ export class EditEducacionComponent implements OnInit {
       tiempoHasta: ['', [Validators.required]],
       actualmente: [false, [Validators.required]],
       descripcion: ['', [Validators.required]],
+      linkCertificate: [''],
+
     });
   }
 
@@ -57,6 +59,7 @@ export class EditEducacionComponent implements OnInit {
         tiempoHasta: element.tiempoHasta,
         actualmente: element.actualmente,
         descripcion: element.descripcion,
+        linkCertificate: element.linkCertificate,
       });
     this.formLoaded=true
 
@@ -94,6 +97,10 @@ export class EditEducacionComponent implements OnInit {
   get DescripcionEdit() {
     return this.formEduEdit.get('descripcion');
   }
+  get LinkCertificate(){
+    return this.formEduEdit.get('linkCertificate');
+
+  }
 
   clearValidatorsIfActualmente() {
     console.log(this.formEduEdit)
@@ -129,6 +136,7 @@ export class EditEducacionComponent implements OnInit {
       ); //
     }
     if (formulario.valid) {
+      console.log(formulario)
       this.educacionData
         .updateEducation(formulario.value, formulario.value.id)
         .subscribe((data) => {
