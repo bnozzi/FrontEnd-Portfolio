@@ -11,7 +11,8 @@ export class AuthService {
   
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
   private currentUser = {};
-  private path='https://backend-portfolio-j7ck.onrender.com';
+  private path="https://portfolio-bpizzipe.b4a.run"
+  // https://backend-portfolio-j7ck.onrender.com';
 
 
   public constructor(private http: HttpClient, public router: Router) {}

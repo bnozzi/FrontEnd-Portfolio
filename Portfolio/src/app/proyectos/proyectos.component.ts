@@ -119,6 +119,8 @@ export class ProyectosComponent implements OnInit {
   ngOnInit(): void {
     this.ProyectosData.getPoyects().subscribe((data) => {
       this.proyectos = data;
+    }, (error)=>{
+      this.ngOnInit()
     });
   }
 

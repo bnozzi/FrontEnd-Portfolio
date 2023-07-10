@@ -34,6 +34,11 @@
 
 <div id="skills" class=" g-col-8 text-center  mb-1">
   <h4 class="h4 text-light mb-5"> Habilidades</h4>
+  <div class="w-100 d-flex justify-content-center">
+    <div *ngIf="!skills" class="spinner-border text-light" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
 
   <div id="skill-content" class="row gx-1 text-center text-light  ">
     <div id="len" class="col-lg-3 col-sm-6    " *ngFor="let categoria of skills">

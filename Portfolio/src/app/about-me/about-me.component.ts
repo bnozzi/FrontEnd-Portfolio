@@ -38,6 +38,8 @@ export class AboutMeComponent implements OnInit {
 
   }
 
+  
+
   aboutMe: any;
   formularioAboutMe!: FormGroup;
   colorAlert: string = '';
@@ -63,6 +65,9 @@ export class AboutMeComponent implements OnInit {
         bannerImagen: [this.aboutMe.bannerImagen || '', Validators.required],
         descripcion: [this.aboutMe.descripcion || '', Validators.required],
       });
+    },
+    (error)=>{
+      this.ngOnInit()
     });
   }
 

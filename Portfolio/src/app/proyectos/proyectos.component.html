@@ -27,6 +27,12 @@
 
 <div id="proyectos" class=" g-col-8   text-center" >
   <h4 class="h4 text-light"> Proyectos</h4>
+
+  <div class="w-100 d-flex justify-content-center">
+    <div *ngIf="!proyectos" class="spinner-border text-light" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
   <div id=carouselComponent class=""  *ngIf="proyectos.length>0">
 
     <!-- para  cancelar el autoslide  Agregando data-interval="false"y eliminando data-bs-ride="carousel" -->

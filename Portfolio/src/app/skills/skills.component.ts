@@ -101,6 +101,9 @@ loadingEdit=[];
       this.skills = data.map((item: any) => {
         return { ...item, loadingEdit: false, loadingDelete: false };
       });
+    },
+    (error)=>{
+      this.ngOnInit()
     })
     ;
   }

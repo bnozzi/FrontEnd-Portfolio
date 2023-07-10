@@ -20,7 +20,7 @@ export class EducacionComponent implements OnInit {
 
   mensajeResponse: string = '';
   colorAlert: string = 'alert-success';
-  loading=false;
+  loading = false;
 
   changeColorAlert(color: string) {
     this.colorAlert = color;
@@ -33,15 +33,13 @@ export class EducacionComponent implements OnInit {
     private datePipe: DatePipe,
     public router: Router
   ) {
-
     const navigation = this.router.getCurrentNavigation();
     if (navigation && navigation.extras.state) {
       this.mensajeResponse = navigation.extras.state['response'].mensaje;
-      if (this.mensajeResponse=="educacion actualizada"){
-        this.changeColorAlert("alert-warning")
-      }
-      else{
-        this.changeColorAlert("alert-success")
+      if (this.mensajeResponse == 'educacion actualizada') {
+        this.changeColorAlert('alert-warning');
+      } else {
+        this.changeColorAlert('alert-success');
       }
     }
   }
@@ -54,46 +52,57 @@ export class EducacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.educacionData.getEducacion().subscribe((data) => {
-      this.educacion = data;
-      console.log(data)
-    },
-    (error) => {
-      this.mensajeResponse=error.error.message
-      this.changeColorAlert("alert-danger")
+    this.educacionData.getEducacion().subscribe(
+      (data) => {
+        this.educacion = data;
+        this.sortEducation()
+        // console.log(data)
+      },
+      (error) => {
+        // console.log(error);
       
-    });
-    console.log(this.mensajeResponse)
+        this.mensajeResponse = error.error.error;
+        this.changeColorAlert('alert-danger');
+        this.ngOnInit();
+      }
+    );
+    console.log(this.mensajeResponse);
   }
+  //sort this.education for date in att called fecha hasta 
+    sortEducation(){
+      //sort educacion by id
+      this.educacion.sort((a:any, b:any)=> {
+        return a.id - b.id;
+      });}
+
+    
+  
 
   updateEducation() {
     //route
-        this.changeColorAlert('alert-warning');
-        this.ngOnInit();
+    this.changeColorAlert('alert-warning');
+    this.ngOnInit();
   }
 
   addNewEducation() {
-     this.changeColorAlert("alert-success")
+    this.changeColorAlert('alert-success');
   }
 
-
-
   deleteEducation(id: number) {
-    this.loading=true
+    this.loading = true;
     this.changeColorAlert('alert-danger');
-    this.educacionData.deleteEducation(id).subscribe((data) => {
-      this.mensajeResponse = data.mensaje;
+    this.educacionData.deleteEducation(id).subscribe(
+      (data) => {
+        this.mensajeResponse = data.mensaje;
 
-      this.ngOnInit();
-      this.loading=false
-    },
-    (error) => {
-      this.mensajeResponse=error.error.message
-      this.changeColorAlert("alert-danger")
-        this.loading=false;
-
-      
-    }
+        this.ngOnInit();
+        this.loading = false;
+      },
+      (error) => {
+        this.mensajeResponse = error.error.message;
+        this.changeColorAlert('alert-danger');
+        this.loading = false;
+      }
     );
   }
 
