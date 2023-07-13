@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class AboutMeService {
 
-  public path:string="https://portfolio-bpizzipe.b4a.run"
+  public path:string="https://portfolio2-bpizzipe.b4a.run"
+  
 
   // 'https://backend-portfolio-j7ck.onrender.com'
   // private path='http://localhost:8083';

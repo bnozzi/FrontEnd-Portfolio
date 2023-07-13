@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class SkillsService {
 // private path ="http://localhost:8083";
-  private path ="https://portfolio-bpizzipe.b4a.run"
+  private path ="https://portfolio2-bpizzipe.b4a.run"
   // "https://backend-portfolio-j7ck.onrender.com";
   constructor(private http: HttpClient) { }
 
