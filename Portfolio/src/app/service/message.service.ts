@@ -11,6 +11,6 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
 SendToFormspree(body:any): Observable<any> {
-  return this.http.post("https://formspree.io/f/xayzlvjb",body)
+  return this.http.post("https://portfolio-bnozzi.koyeb.app/message",body)
 }
 }

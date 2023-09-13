@@ -27,10 +27,12 @@ export class FooterComponent implements OnInit {
         // Maneja la respuesta del servidor aquí
         
         this.closeModal()
+        alert("mensaje enviado")
       },
       error => {
         console.error('Error en la solicitud:', error);
         // Maneja el error aquí
+        this.closeModal()
       }
     );
   }
